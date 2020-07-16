@@ -17,6 +17,8 @@ import { PaketauswahlComponent } from './configuration-view/paketauswahl/paketau
 import { BeguenstigterComponent } from './configuration-view/beguenstigter/beguenstigter.component';
 import { ZusammenfassungComponent } from './configuration-view/zusammenfassung/zusammenfassung.component';
 
+import { VorsorgeConfigurationState } from './store/vorsorge-configuration.state';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,10 @@ import { ZusammenfassungComponent } from './configuration-view/zusammenfassung/z
     BrowserModule,
     AppRoutingModule,
     FlexLayoutModule,
-    [NgxsModule.forRoot([]), NgxsReduxDevtoolsPluginModule.forRoot()],
+    [
+      NgxsModule.forRoot([VorsorgeConfigurationState]),
+      NgxsReduxDevtoolsPluginModule.forRoot(),
+    ],
   ],
   providers: [],
   bootstrap: [AppComponent],

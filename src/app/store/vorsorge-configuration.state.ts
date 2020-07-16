@@ -59,6 +59,7 @@ export interface VorsorgeConfigurationStateModel {
       yetAnotherBooleanValue: false,
     },
   },
+  children: [],
 })
 export class VorsorgeConfigurationState {
   readonly defaultConfig: {
@@ -77,9 +78,6 @@ export class VorsorgeConfigurationState {
     ctx: StateContext<VorsorgeConfigurationStateModel>,
     { payload }: ChangeBestattungsArt
   ) {
-    const state = ctx.getState();
-    console.log('before');
-    console.log(state);
     ctx.setState({
       bestattungsArtConfig: payload,
       grabstellenConfig: this.defaultConfig,
@@ -88,7 +86,5 @@ export class VorsorgeConfigurationState {
       beguenstigterConfig: this.defaultConfig,
       zusammenfassungConfig: this.defaultConfig,
     });
-    console.log('after');
-    console.log(state);
   }
 }
