@@ -1,7 +1,6 @@
 export interface DummyConfig {
   someBooleanValue: boolean;
   someOtherBooleanValue: boolean;
-  yetAnotherBooleanValue: boolean;
 }
 
 export interface BestattungsArtConfig extends DummyConfig {}

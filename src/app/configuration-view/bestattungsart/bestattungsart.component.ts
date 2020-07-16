@@ -19,7 +19,6 @@ export class BestattungsartComponent implements OnInit {
       new ChangeBestattungsArt({
         someBooleanValue: true,
         someOtherBooleanValue: true,
-        yetAnotherBooleanValue: true,
       })
     );
   }

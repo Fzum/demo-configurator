@@ -31,41 +31,34 @@ export interface VorsorgeConfigurationStateModel {
     bestattungsArtConfig: {
       someBooleanValue: false,
       someOtherBooleanValue: false,
-      yetAnotherBooleanValue: false,
     },
     grabstellenConfig: {
       someBooleanValue: false,
       someOtherBooleanValue: false,
-      yetAnotherBooleanValue: false,
     },
     verabschiedungsfeierConfig: {
       someBooleanValue: false,
       someOtherBooleanValue: false,
-      yetAnotherBooleanValue: false,
     },
     paketauswahlConfig: {
       someBooleanValue: false,
       someOtherBooleanValue: false,
-      yetAnotherBooleanValue: false,
     },
     beguenstigterConfig: {
       someBooleanValue: false,
       someOtherBooleanValue: false,
-      yetAnotherBooleanValue: false,
     },
     zusammenfassungConfig: {
       someBooleanValue: false,
       someOtherBooleanValue: false,
-      yetAnotherBooleanValue: false,
     },
   },
   children: [],
 })
 export class VorsorgeConfigurationState {
-  readonly defaultConfig: {
-    someBooleanValue: false;
-    someOtherBooleanValue: false;
-    yetAnotherBooleanValue: false;
+  readonly defaultConfig: DummyConfig = {
+    someBooleanValue: false,
+    someOtherBooleanValue: false,
   };
 
   @Selector()
