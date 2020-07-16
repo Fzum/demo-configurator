@@ -27,12 +27,18 @@ export class StepByStepConfigurerComponent implements OnInit {
   }
 
   next(): void {
-    this.configurationIndex++;
+    if (this.configurationIndex < this.configurationSteps.length - 1) {
+      this.configurationIndex++;
+    }
+
     this.setActiveConfiguration();
   }
 
   previous(): void {
-    this.configurationIndex--;
+    if (this.configurationIndex > 0) {
+      this.configurationIndex--;
+    }
+
     this.setActiveConfiguration();
   }
 }
