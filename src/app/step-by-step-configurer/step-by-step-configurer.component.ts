@@ -9,10 +9,16 @@ import { ConfigurationStep } from '../model/configurationstep';
 })
 export class StepByStepConfigurerComponent implements OnInit {
   configurationSteps: ConfigurationStep[];
+  activeConfigurationStep: ConfigurationStep;
 
   constructor(service: ConfigurationstepMockService) {
     this.configurationSteps = service.getConfigurationSteps();
+    this.activeConfigurationStep = this.configurationSteps[0];
   }
 
   ngOnInit(): void {}
+
+  next(): void {}
+
+  previous(): void {}
 }
