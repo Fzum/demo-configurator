@@ -8,6 +8,7 @@ import {
   PaketauswahlConfig,
   ZusammenfassungConfig,
 } from '../model/dummy-config.model';
+import { stat, read } from 'fs';
 
 export interface VorsorgeConfigurationStateModel {
   bestattungsArtConfig: BestattungsArtConfig;
@@ -25,31 +26,37 @@ export interface VorsorgeConfigurationStateModel {
       someBooleanValue: false,
       someOtherBooleanValue: false,
       yetAnotherBooleanValue: false,
+      childrenToResetOnChange: [],
     },
     grabstellenConfig: {
       someBooleanValue: false,
       someOtherBooleanValue: false,
       yetAnotherBooleanValue: false,
+      childrenToResetOnChange: [],
     },
     verabschiedungsfeierConfig: {
       someBooleanValue: false,
       someOtherBooleanValue: false,
       yetAnotherBooleanValue: false,
+      childrenToResetOnChange: [],
     },
     paketauswahlConfig: {
       someBooleanValue: false,
       someOtherBooleanValue: false,
       yetAnotherBooleanValue: false,
+      childrenToResetOnChange: [],
     },
     beguenstigterConfig: {
       someBooleanValue: false,
       someOtherBooleanValue: false,
       yetAnotherBooleanValue: false,
+      childrenToResetOnChange: [],
     },
     zusammenfassungConfig: {
       someBooleanValue: false,
       someOtherBooleanValue: false,
       yetAnotherBooleanValue: false,
+      childrenToResetOnChange: [],
     },
   },
 })
