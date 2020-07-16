@@ -1,8 +1,5 @@
-export enum ConfigurationStep {
-  BESTATTUNGSART,
-  GRABSTELLE,
-  VERABSCHIEDUNGSFEIER,
-  PAKETAUSWAHL,
-  BEGUENSTIGTER,
-  ZUSAMMENFASSUNG,
+import { ConfigurationStepType } from './configurationstep-type';
+
+export interface ConfigurationStep {
+  type: ConfigurationStepType;
 }
