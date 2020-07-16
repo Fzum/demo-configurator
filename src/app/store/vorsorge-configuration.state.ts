@@ -15,7 +15,6 @@ import {
   ZusammenfassungConfig,
   DummyConfig,
 } from '../model/dummy-config.model';
-import { stat, read } from 'fs';
 
 export interface VorsorgeConfigurationStateModel {
   bestattungsArtConfig: BestattungsArtConfig;
@@ -62,7 +61,7 @@ export interface VorsorgeConfigurationStateModel {
   },
 })
 export class VorsorgeConfigurationState {
-  defaultConfig: {
+  readonly defaultConfig: {
     someBooleanValue: false;
     someOtherBooleanValue: false;
     yetAnotherBooleanValue: false;
@@ -76,16 +75,20 @@ export class VorsorgeConfigurationState {
   @Action(ChangeBestattungsArt)
   public changeBestattungsArt(
     ctx: StateContext<VorsorgeConfigurationStateModel>,
-    action: ChangeBestattungsArt
+    { payload }: ChangeBestattungsArt
   ) {
     const state = ctx.getState();
+    console.log('before');
+    console.log(state);
     ctx.setState({
-      bestattungsArtConfig: action.payload,
+      bestattungsArtConfig: payload,
       grabstellenConfig: this.defaultConfig,
       verabschiedungsfeierConfig: this.defaultConfig,
       paketauswahlConfig: this.defaultConfig,
       beguenstigterConfig: this.defaultConfig,
       zusammenfassungConfig: this.defaultConfig,
     });
+    console.log('after');
+    console.log(state);
   }
 }

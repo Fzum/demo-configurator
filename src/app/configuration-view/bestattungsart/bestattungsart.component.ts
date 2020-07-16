@@ -14,6 +14,7 @@ export class BestattungsartComponent implements OnInit {
   ngOnInit(): void {}
 
   simulateBestattungsartChange(): void {
+    console.log('should dispatch now');
     this.store.dispatch(
       new ChangeBestattungsArt({
         someBooleanValue: true,

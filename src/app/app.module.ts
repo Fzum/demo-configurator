@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +17,7 @@ import { PaketauswahlComponent } from './configuration-view/paketauswahl/paketau
 import { BeguenstigterComponent } from './configuration-view/beguenstigter/beguenstigter.component';
 import { ZusammenfassungComponent } from './configuration-view/zusammenfassung/zusammenfassung.component';
 import { environment } from 'src/environments/environment';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,8 @@ import { environment } from 'src/environments/environment';
     NgxsModule.forRoot([], {
       developmentMode: !environment.production,
     }),
+    NgxsReduxDevtoolsPluginModule,
+    NgxsLoggerPluginModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

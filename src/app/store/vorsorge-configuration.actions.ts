@@ -30,6 +30,7 @@ export class ChangePaketauswahl {
   public static readonly type = '[VorsorgeConfiguration] Change Paketauswahl';
   constructor(public payload: PaketauswahlConfig) {}
 }
+
 export class ChangeBeguenstigter {
   public static readonly type = '[VorsorgeConfiguration] Change Beguenstigter';
   constructor(public payload: BeguenstigterConfig) {}
