@@ -1,8 +1,8 @@
 export enum ConfigurationStepType {
-  BESTATTUNGSART,
-  GRABSTELLE,
-  VERABSCHIEDUNGSFEIER,
-  PAKETAUSWAHL,
-  BEGUENSTIGTER,
-  ZUSAMMENFASSUNG,
+  BESTATTUNGSART = 'Bestattungsart',
+  GRABSTELLE = 'Grabstelle',
+  VERABSCHIEDUNGSFEIER = 'Verabschiedungsfeier',
+  PAKETAUSWAHL = 'Paketauswahl',
+  BEGUENSTIGTER = 'Begünstigter',
+  ZUSAMMENFASSUNG = 'Zusammenfassung',
 }

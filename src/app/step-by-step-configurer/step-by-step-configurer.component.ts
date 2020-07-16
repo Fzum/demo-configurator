@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigurationstepMockService } from '../mock/configurationstep-mock-service.service';
+import { ConfigurationStep } from '../model/configurationstep';
 
 @Component({
   selector: 'app-step-by-step-configurer',
@@ -6,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./step-by-step-configurer.component.scss'],
 })
 export class StepByStepConfigurerComponent implements OnInit {
-  constructor() {}
+  configurationSteps: ConfigurationStep[];
+
+  constructor(service: ConfigurationstepMockService) {
+    this.configurationSteps = service.getConfigurationSteps();
+  }
 
   ngOnInit(): void {}
 }

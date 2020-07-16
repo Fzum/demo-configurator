@@ -1,5 +1,5 @@
 <div fxLayoutAlign="space-between">
-  <div fxFlex style="border:1px solid black">Box1</div>
-  <div fxFlex style="border:1px solid black">Box2</div>
-  <div fxFlex style="border:1px solid black">Box3</div>
+  <div fxLayoutAlign="center" fxFlex *ngFor="let s of configurationSteps">
+    {{ s.type }}
+  </div>
 </div>
