@@ -7,7 +7,7 @@ import {
   BestattungsArtConfig,
   PaketauswahlConfig,
   ZusammenfassungConfig,
-} from '../app/model/dummy-config.model';
+} from '../model/dummy-config.model';
 
 export interface VorsorgeConfigurationStateModel {
   bestattungsArtConfig: BestattungsArtConfig;

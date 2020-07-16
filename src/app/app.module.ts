@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgxsModule } from '@ngxs/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import { VerabschiedungsfeierComponent } from './configuration-view/verabschiedu
 import { PaketauswahlComponent } from './configuration-view/paketauswahl/paketauswahl.component';
 import { BeguenstigterComponent } from './configuration-view/beguenstigter/beguenstigter.component';
 import { ZusammenfassungComponent } from './configuration-view/zusammenfassung/zusammenfassung.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,14 @@ import { ZusammenfassungComponent } from './configuration-view/zusammenfassung/z
     BeguenstigterComponent,
     ZusammenfassungComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FlexLayoutModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FlexLayoutModule,
+    NgxsModule.forRoot([], {
+      developmentMode: !environment.production,
+    }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
