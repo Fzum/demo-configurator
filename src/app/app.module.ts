@@ -16,8 +16,6 @@ import { VerabschiedungsfeierComponent } from './configuration-view/verabschiedu
 import { PaketauswahlComponent } from './configuration-view/paketauswahl/paketauswahl.component';
 import { BeguenstigterComponent } from './configuration-view/beguenstigter/beguenstigter.component';
 import { ZusammenfassungComponent } from './configuration-view/zusammenfassung/zusammenfassung.component';
-import { environment } from 'src/environments/environment';
-import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -34,11 +32,7 @@ import { from } from 'rxjs';
     BrowserModule,
     AppRoutingModule,
     FlexLayoutModule,
-    NgxsModule.forRoot([], {
-      developmentMode: !environment.production,
-    }),
-    NgxsReduxDevtoolsPluginModule,
-    NgxsLoggerPluginModule,
+    [NgxsModule.forRoot([]), NgxsReduxDevtoolsPluginModule.forRoot()],
   ],
   providers: [],
   bootstrap: [AppComponent],
