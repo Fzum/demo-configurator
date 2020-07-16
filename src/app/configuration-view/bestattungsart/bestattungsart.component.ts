@@ -1,15 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngxs/store';
+
+import { ChangeBestattungsArt } from '../../store/vorsorge-configuration.actions';
 
 @Component({
   selector: 'app-bestattungsart',
   templateUrl: './bestattungsart.component.html',
-  styleUrls: ['./bestattungsart.component.scss']
+  styleUrls: ['./bestattungsart.component.scss'],
 })
 export class BestattungsartComponent implements OnInit {
+  constructor(private store: Store) {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  simulateBestattungsartChange(): void {
+    this.store.dispatch(
+      new ChangeBestattungsArt({
+        someBooleanValue: true,
+        someOtherBooleanValue: true,
+        yetAnotherBooleanValue: true,
+      })
+    );
   }
-
 }

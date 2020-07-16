@@ -2,7 +2,6 @@ export interface DummyConfig {
   someBooleanValue: boolean;
   someOtherBooleanValue: boolean;
   yetAnotherBooleanValue: boolean;
-  readonly childrenToResetOnChange: DummyConfig[];
 }
 
 export interface BestattungsArtConfig extends DummyConfig {}

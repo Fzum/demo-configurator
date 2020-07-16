@@ -1,5 +1,11 @@
 import { State, Action, Selector, StateContext } from '@ngxs/store';
-import { VorsorgeConfigurationAction } from './vorsorge-configuration.actions';
+import {
+  ChangeBeguenstigter,
+  ChangeBestattungsArt,
+  ChangeGrabstelle,
+  ChangePaketauswahl,
+  ChangeVerabschiedungsfeier,
+} from './vorsorge-configuration.actions';
 import {
   BeguenstigterConfig,
   GrabstellenConfig,
@@ -7,6 +13,7 @@ import {
   BestattungsArtConfig,
   PaketauswahlConfig,
   ZusammenfassungConfig,
+  DummyConfig,
 } from '../model/dummy-config.model';
 import { stat, read } from 'fs';
 
@@ -26,53 +33,59 @@ export interface VorsorgeConfigurationStateModel {
       someBooleanValue: false,
       someOtherBooleanValue: false,
       yetAnotherBooleanValue: false,
-      childrenToResetOnChange: [],
     },
     grabstellenConfig: {
       someBooleanValue: false,
       someOtherBooleanValue: false,
       yetAnotherBooleanValue: false,
-      childrenToResetOnChange: [],
     },
     verabschiedungsfeierConfig: {
       someBooleanValue: false,
       someOtherBooleanValue: false,
       yetAnotherBooleanValue: false,
-      childrenToResetOnChange: [],
     },
     paketauswahlConfig: {
       someBooleanValue: false,
       someOtherBooleanValue: false,
       yetAnotherBooleanValue: false,
-      childrenToResetOnChange: [],
     },
     beguenstigterConfig: {
       someBooleanValue: false,
       someOtherBooleanValue: false,
       yetAnotherBooleanValue: false,
-      childrenToResetOnChange: [],
     },
     zusammenfassungConfig: {
       someBooleanValue: false,
       someOtherBooleanValue: false,
       yetAnotherBooleanValue: false,
-      childrenToResetOnChange: [],
     },
   },
 })
 export class VorsorgeConfigurationState {
+  defaultConfig: {
+    someBooleanValue: false;
+    someOtherBooleanValue: false;
+    yetAnotherBooleanValue: false;
+  };
+
   @Selector()
   public static getState(state: VorsorgeConfigurationStateModel) {
     return state;
   }
 
-  @Action(VorsorgeConfigurationAction)
-  public add(
+  @Action(ChangeBestattungsArt)
+  public changeBestattungsArt(
     ctx: StateContext<VorsorgeConfigurationStateModel>,
-    { payload }: VorsorgeConfigurationAction
+    action: ChangeBestattungsArt
   ) {
-    const stateModel = ctx.getState();
-    // stateModel.items = [...stateModel.items, payload];
-    ctx.setState(stateModel);
+    const state = ctx.getState();
+    ctx.setState({
+      bestattungsArtConfig: action.payload,
+      grabstellenConfig: this.defaultConfig,
+      verabschiedungsfeierConfig: this.defaultConfig,
+      paketauswahlConfig: this.defaultConfig,
+      beguenstigterConfig: this.defaultConfig,
+      zusammenfassungConfig: this.defaultConfig,
+    });
   }
 }
