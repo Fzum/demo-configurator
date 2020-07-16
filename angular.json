@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "demo-configurator"
+    }
+  },
+  "defaultProject": "demo-configurator",
+  "cli": {
+    "defaultCollection": "@ngxs/schematics"
+  }
 }
