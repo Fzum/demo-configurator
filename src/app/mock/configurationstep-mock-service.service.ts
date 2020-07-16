@@ -10,12 +10,30 @@ export class ConfigurationstepMockService {
 
   public getConfigurationSteps(): ConfigurationStep[] {
     return [
-      { type: ConfigurationStepType.BESTATTUNGSART },
-      { type: ConfigurationStepType.GRABSTELLE },
-      { type: ConfigurationStepType.VERABSCHIEDUNGSFEIER },
-      { type: ConfigurationStepType.PAKETAUSWAHL },
-      { type: ConfigurationStepType.BEGUENSTIGTER },
-      { type: ConfigurationStepType.ZUSAMMENFASSUNG },
+      {
+        type: ConfigurationStepType.BESTATTUNGSART,
+        header: 'Welche Bestattungsart willst du?',
+      },
+      {
+        type: ConfigurationStepType.GRABSTELLE,
+        header: 'Welche Grabstelle willst du?',
+      },
+      {
+        type: ConfigurationStepType.VERABSCHIEDUNGSFEIER,
+        header: 'Willst du eine Verabschiedung?',
+      },
+      {
+        type: ConfigurationStepType.PAKETAUSWAHL,
+        header: 'Welches Paket willst du?',
+      },
+      {
+        type: ConfigurationStepType.BEGUENSTIGTER,
+        header: 'Wer ist der Begünstigte?',
+      },
+      {
+        type: ConfigurationStepType.ZUSAMMENFASSUNG,
+        header: 'Hier ist die Zusammenfassung!',
+      },
     ];
   }
 }

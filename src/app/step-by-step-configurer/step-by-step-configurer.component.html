@@ -8,3 +8,8 @@
     <button [disabled]="s !== activeConfigurationStep">{{ s.type }}</button>
   </div>
 </div>
+<div fxLayoutAlign="space-between">
+  <button (click)="previous()">Zurück</button>
+  <h1>{{ activeConfigurationStep.header }}</h1>
+  <button (click)="next()">Weiter</button>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { ConfigurationstepMockService } from '../mock/configurationstep-mock-service.service';
 import { ConfigurationStep } from '../model/configurationstep';
 
@@ -8,17 +8,31 @@ import { ConfigurationStep } from '../model/configurationstep';
   styleUrls: ['./step-by-step-configurer.component.scss'],
 })
 export class StepByStepConfigurerComponent implements OnInit {
+  configurationIndex: number;
   configurationSteps: ConfigurationStep[];
   activeConfigurationStep: ConfigurationStep;
 
   constructor(service: ConfigurationstepMockService) {
+    this.configurationIndex = 0;
     this.configurationSteps = service.getConfigurationSteps();
-    this.activeConfigurationStep = this.configurationSteps[0];
+    this.setActiveConfiguration();
   }
 
   ngOnInit(): void {}
 
-  next(): void {}
+  private setActiveConfiguration(): void {
+    this.activeConfigurationStep = this.configurationSteps[
+      this.configurationIndex
+    ];
+  }
 
-  previous(): void {}
+  next(): void {
+    this.configurationIndex++;
+    this.setActiveConfiguration();
+  }
+
+  previous(): void {
+    this.configurationIndex--;
+    this.setActiveConfiguration();
+  }
 }
