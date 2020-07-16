@@ -1,25 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngxs/store';
 
 import { ChangeBestattungsArt } from '../../store/vorsorge-configuration.actions';
+import { ConfigruationChangedContract } from '../configuration-changed-contract';
 
 @Component({
   selector: 'app-bestattungsart',
   templateUrl: './bestattungsart.component.html',
   styleUrls: ['./bestattungsart.component.scss'],
 })
-export class BestattungsartComponent implements OnInit {
-  constructor(private store: Store) {}
+export class BestattungsartComponent
+  implements OnInit, ConfigruationChangedContract {
+  private isConfigurationChanged: boolean;
+
+  constructor() {}
 
   ngOnInit(): void {}
 
+  getIsConfigurationChanged(): boolean {
+    return this.isConfigurationChanged;
+  }
+
+  getActionToDispatch() {
+    return new ChangeBestattungsArt({
+      someBooleanValue: true,
+      someOtherBooleanValue: true,
+    });
+  }
+
   simulateBestattungsartChange(): void {
-    console.log('should dispatch now');
-    this.store.dispatch(
-      new ChangeBestattungsArt({
-        someBooleanValue: true,
-        someOtherBooleanValue: true,
-      })
-    );
+    this.isConfigurationChanged = true;
   }
 }
