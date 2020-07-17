@@ -1,20 +1,26 @@
 <div [ngSwitch]="configurationType">
-  <div *ngSwitchCase="'Bestattungsart'">
-    <app-bestattungsart></app-bestattungsart>
-  </div>
-  <div *ngSwitchCase="'Grabstelle'">
-    <app-grabstelle></app-grabstelle>
-  </div>
-  <div *ngSwitchCase="'Verabschiedungsfeier'">
-    <app-verabschiedungsfeier></app-verabschiedungsfeier>
-  </div>
-  <div *ngSwitchCase="'Paketauswahl'">
-    <app-paketauswahl></app-paketauswahl>
-  </div>
-  <div *ngSwitchCase="'Begünstigter'">
-    <app-beguenstigter></app-beguenstigter>
-  </div>
-  <div *ngSwitchCase="'Zusammenfassung'">
-    <app-zusammenfassung></app-zusammenfassung>
-  </div>
+  <app-bestattungsart
+    *ngSwitchCase="'Bestattungsart'"
+    #abstractConfiguration
+  ></app-bestattungsart>
+  <app-grabstelle
+    *ngSwitchCase="'Grabstelle'"
+    #abstractConfiguration
+  ></app-grabstelle>
+  <app-verabschiedungsfeier
+    *ngSwitchCase="'Verabschiedungsfeier'"
+    #abstractConfiguration
+  ></app-verabschiedungsfeier>
+  <app-paketauswahl
+    *ngSwitchCase="'Paketauswahl'"
+    #abstractConfiguration
+  ></app-paketauswahl>
+  <app-beguenstigter
+    *ngSwitchCase="'Begünstigter'"
+    #abstractConfiguration
+  ></app-beguenstigter>
+  <app-zusammenfassung
+    *ngSwitchCase="'Zusammenfassung'"
+    #abstractConfiguration
+  ></app-zusammenfassung>
 </div>
