@@ -66,15 +66,18 @@ export class StepByStepConfigurerComponent implements OnInit {
 
   getActiveViewChild(): any {
     // todo: fix return type to typesafety: something like AbstractConfiguration<any extends ConfigurationChangeAction>
-    const activeViewChild: AbstractConfiguration<any> = [
+    const activeViewChild: AbstractConfiguration<ConfigurationChangeAction> = [
       this.bestattungsArtComponent,
       this.grabstelleComponent,
       this.verabschiedungsfeierComponent,
       this.paketauswahlComponent,
       this.beguenstigterComponent,
-    ].filter((c) => c !== null);
+    ].filter((c) => c !== null)[0];
 
+    console.log('als letztes war folgendes ViewChild aktiv');
     console.log(activeViewChild);
+
+    return activeViewChild;
   }
 
   previous(): void {

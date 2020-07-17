@@ -2,7 +2,7 @@ import { ConfigruationChangedContract } from './configuration-changed-contract';
 
 export abstract class AbstractConfiguration<T>
   implements ConfigruationChangedContract<T> {
-  isChanged: boolean;
+  isChanged: boolean = false;
   changeAction: T;
 
   markConfigurationAsChanged(): void {
