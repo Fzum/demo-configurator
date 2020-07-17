@@ -1,11 +1,10 @@
-import { Component, OnInit, NgModule, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { ConfigurationstepMockService } from '../mock/configurationstep-mock-service.service';
 import { ConfigurationStep } from '../model/configurationstep';
 import { BestattungsartComponent } from '../configuration-view/bestattungsart/bestattungsart.component';
 import { GrabstelleComponent } from '../configuration-view/grabstelle/grabstelle.component';
-import { ConfigruationChangedContract } from '../configuration-view/configuration-changed-contract';
 import { Store } from '@ngxs/store';
-import { AbstractConfiguration } from '../configuration-view/abstract-configuration';
+import { ConfigruationChangedContract } from '../configuration-view/configuration-changed-contract';
 import { ConfigurationChangeAction } from '../store/vorsorge-configuration.actions';
 
 @Component({
@@ -39,9 +38,10 @@ export class StepByStepConfigurerComponent implements OnInit {
   }
 
   next(): void {
-    const component = this.getActiveViewChild();
-    if (component.getIsConfigurationChanged()) {
-      this.store.dispatch(component.getChangedAction());
+    const component: ConfigruationChangedContract<any> = this.getActiveViewChild();
+    if (component.isConfigurationChanged()) {
+      const action: ConfigurationChangeAction = component.getAction();
+      this.store.dispatch(action);
     }
 
     if (this.configurationIndex < this.configurationSteps.length - 1) {

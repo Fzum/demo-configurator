@@ -1,23 +1,26 @@
 import { ConfigruationChangedContract } from './configuration-changed-contract';
+import { OnDestroy } from '@angular/core';
 
-export class AbstractConfiguration<T>
-  implements ConfigruationChangedContract<T> {
+export abstract class AbstractConfiguration<T>
+  implements ConfigruationChangedContract<T>, OnDestroy {
   isChanged: boolean;
   changeAction: T;
 
-  setConfigurationChanged(): void {
+  markConfigurationAsChanged(): void {
     this.isChanged = true;
   }
 
-  getIsConfigurationChanged(): boolean {
+  isConfigurationChanged(): boolean {
     return this.isChanged;
   }
 
-  setChangedAction(action: T): void {
+  setAction(action: T): void {
     this.changeAction = action;
   }
 
-  getChangedAction(): T {
+  getAction(): T {
     return this.changeAction;
   }
+
+  abstract ngOnDestroy(): void;
 }

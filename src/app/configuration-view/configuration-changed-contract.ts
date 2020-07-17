@@ -1,7 +1,7 @@
 export interface ConfigruationChangedContract<T> {
-  setConfigurationChanged(): void;
-  getIsConfigurationChanged(): boolean;
+  markConfigurationAsChanged(): void;
+  isConfigurationChanged(): boolean;
 
-  setChangedAction(action: T): void;
-  getChangedAction(): T;
+  setAction(action: T): void;
+  getAction(): T;
 }
