@@ -12,6 +12,7 @@ import {
   ResetGrabstelle,
   ResetPaketauswahl,
   ResetVerabschiedungsfeier,
+  ResetAction,
 } from './vorsorge-reset-actions';
 
 import {
@@ -72,11 +73,12 @@ export class VorsorgeConfigurationState {
     { payload }: ChangeBestattungsArt
   ) {
     ctx.patchState({ bestattungsArtConfig: payload });
-
-    ctx.dispatch(new ResetGrabstelle());
-    ctx.dispatch(new ResetVerabschiedungsfeier());
-    ctx.dispatch(new ResetPaketauswahl());
-    ctx.dispatch(new ResetBeguenstiger());
+    this.resetChildren(ctx, [
+      new ResetGrabstelle(),
+      new ResetVerabschiedungsfeier(),
+      new ResetPaketauswahl(),
+      new ResetBeguenstiger(),
+    ]);
   }
 
   @Action(ChangeGrabstelle)
@@ -85,10 +87,11 @@ export class VorsorgeConfigurationState {
     { payload }: ChangeGrabstelle
   ) {
     ctx.patchState({ grabstellenConfig: payload });
-
-    ctx.dispatch(new ResetVerabschiedungsfeier());
-    ctx.dispatch(new ResetPaketauswahl());
-    ctx.dispatch(new ResetBeguenstiger());
+    this.resetChildren(ctx, [
+      new ResetVerabschiedungsfeier(),
+      new ResetPaketauswahl(),
+      new ResetBeguenstiger(),
+    ]);
   }
 
   @Action(ChangeVerabschiedungsfeier)
@@ -97,8 +100,7 @@ export class VorsorgeConfigurationState {
     { payload }: ChangeVerabschiedungsfeier
   ) {
     ctx.patchState({ verabschiedungsfeierConfig: payload });
-    ctx.dispatch(new ResetPaketauswahl());
-    ctx.dispatch(new ResetBeguenstiger());
+    this.resetChildren(ctx, [new ResetPaketauswahl(), new ResetBeguenstiger()]);
   }
 
   @Action(ChangePaketauswahl)
@@ -107,7 +109,7 @@ export class VorsorgeConfigurationState {
     { payload }: ChangePaketauswahl
   ) {
     ctx.patchState({ paketauswahlConfig: payload });
-    ctx.dispatch(new ResetBeguenstiger());
+    this.resetChildren(ctx, [new ResetBeguenstiger()]);
   }
 
   @Action(ChangeBeguenstigter)
@@ -138,5 +140,12 @@ export class VorsorgeConfigurationState {
   @Action(ResetBeguenstiger)
   public resetBeguenstiger(ctx: StateContext<VorsorgeConfigurationStateModel>) {
     ctx.patchState({ beguenstigterConfig: this.defaultConfig });
+  }
+
+  private resetChildren(
+    ctx: StateContext<VorsorgeConfigurationStateModel>,
+    children: ResetAction[]
+  ) {
+    children.forEach(ctx.dispatch);
   }
 }
