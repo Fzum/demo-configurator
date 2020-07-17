@@ -18,6 +18,7 @@ import { BeguenstigterComponent } from './configuration-view/beguenstigter/begue
 import { ZusammenfassungComponent } from './configuration-view/zusammenfassung/zusammenfassung.component';
 
 import { VorsorgeConfigurationState } from './store/vorsorge-configuration.state';
+import { ConfigurationViewSwitcherComponent } from './configuration-view-switcher/configuration-view-switcher.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { VorsorgeConfigurationState } from './store/vorsorge-configuration.state
     PaketauswahlComponent,
     BeguenstigterComponent,
     ZusammenfassungComponent,
+    ConfigurationViewSwitcherComponent,
   ],
   imports: [
     BrowserModule,

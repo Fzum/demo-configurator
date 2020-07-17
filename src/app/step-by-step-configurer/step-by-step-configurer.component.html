@@ -13,23 +13,6 @@
   <h1>{{ activeConfigurationStep.header }}</h1>
   <button (click)="next()">Weiter</button>
 </div>
-<div [ngSwitch]="activeConfigurationStep.type">
-  <div *ngSwitchCase="'Bestattungsart'">
-    <app-bestattungsart></app-bestattungsart>
-  </div>
-  <div *ngSwitchCase="'Grabstelle'">
-    <app-grabstelle></app-grabstelle>
-  </div>
-  <div *ngSwitchCase="'Verabschiedungsfeier'">
-    <app-verabschiedungsfeier></app-verabschiedungsfeier>
-  </div>
-  <div *ngSwitchCase="'Paketauswahl'">
-    <app-paketauswahl></app-paketauswahl>
-  </div>
-  <div *ngSwitchCase="'Begünstigter'">
-    <app-beguenstigter></app-beguenstigter>
-  </div>
-  <div *ngSwitchCase="'Zusammenfassung'">
-    <app-zusammenfassung></app-zusammenfassung>
-  </div>
-</div>
+<app-configuration-view-switcher
+  [configurationType]="activeConfigurationStep.type"
+></app-configuration-view-switcher>
