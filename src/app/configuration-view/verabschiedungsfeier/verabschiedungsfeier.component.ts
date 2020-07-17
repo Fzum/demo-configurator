@@ -15,11 +15,6 @@ export class VerabschiedungsfeierComponent
   }
 
   ngOnInit(): void {
-    this.setAction(
-      new ChangeVerabschiedungsfeier({
-        someBooleanValue: true,
-        someOtherBooleanValue: true,
-      })
-    );
+    this.setAction(new ChangeVerabschiedungsfeier({ someBooleanValue: true }));
   }
 }

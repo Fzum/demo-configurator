@@ -16,11 +16,6 @@ export class BestattungsartComponent
   }
 
   ngOnInit(): void {
-    this.setAction(
-      new ChangeBestattungsArt({
-        someBooleanValue: true,
-        someOtherBooleanValue: true,
-      })
-    );
+    this.setAction(new ChangeBestattungsArt({ someBooleanValue: true }));
   }
 }

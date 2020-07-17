@@ -6,6 +6,14 @@ import {
   ChangePaketauswahl,
   ChangeVerabschiedungsfeier,
 } from './vorsorge-configuration.actions';
+
+import {
+  ResetBeguenstiger,
+  ResetGrabstelle,
+  ResetPaketauswahl,
+  ResetVerabschiedungsfeier,
+} from './vorsorge-reset-actions';
+
 import {
   BeguenstigterConfig,
   GrabstellenConfig,
@@ -30,35 +38,27 @@ export interface VorsorgeConfigurationStateModel {
   defaults: {
     bestattungsArtConfig: {
       someBooleanValue: false,
-      someOtherBooleanValue: false,
     },
     grabstellenConfig: {
       someBooleanValue: false,
-      someOtherBooleanValue: false,
     },
     verabschiedungsfeierConfig: {
       someBooleanValue: false,
-      someOtherBooleanValue: false,
     },
     paketauswahlConfig: {
       someBooleanValue: false,
-      someOtherBooleanValue: false,
     },
     beguenstigterConfig: {
       someBooleanValue: false,
-      someOtherBooleanValue: false,
     },
     zusammenfassungConfig: {
       someBooleanValue: false,
-      someOtherBooleanValue: false,
     },
   },
-  children: [],
 })
 export class VorsorgeConfigurationState {
   readonly defaultConfig: DummyConfig = {
     someBooleanValue: false,
-    someOtherBooleanValue: false,
   };
 
   @Selector()
@@ -71,17 +71,12 @@ export class VorsorgeConfigurationState {
     ctx: StateContext<VorsorgeConfigurationStateModel>,
     { payload }: ChangeBestattungsArt
   ) {
-    ctx.setState({
-      bestattungsArtConfig: payload,
-      grabstellenConfig: this.defaultConfig,
-      verabschiedungsfeierConfig: this.defaultConfig,
-      paketauswahlConfig: this.defaultConfig,
-      beguenstigterConfig: this.defaultConfig,
-      zusammenfassungConfig: this.defaultConfig,
-    });
-    alert(
-      'Bestattungsart wurde konfiguriert => grabstelle, verabschiedungsfeier, paketauswahl, begünstigter werden resettet!'
-    );
+    ctx.patchState({ bestattungsArtConfig: payload });
+
+    ctx.dispatch(new ResetGrabstelle());
+    ctx.dispatch(new ResetVerabschiedungsfeier());
+    ctx.dispatch(new ResetPaketauswahl());
+    ctx.dispatch(new ResetBeguenstiger());
   }
 
   @Action(ChangeGrabstelle)
@@ -89,17 +84,11 @@ export class VorsorgeConfigurationState {
     ctx: StateContext<VorsorgeConfigurationStateModel>,
     { payload }: ChangeGrabstelle
   ) {
-    ctx.setState({
-      ...ctx.getState(),
-      grabstellenConfig: payload,
-      verabschiedungsfeierConfig: this.defaultConfig,
-      paketauswahlConfig: this.defaultConfig,
-      beguenstigterConfig: this.defaultConfig,
-      zusammenfassungConfig: this.defaultConfig,
-    });
-    alert(
-      'Grabstelle wurde konfiguriert => verabschiedungsfeier, paketauswahl, begünstigter werden resettet!'
-    );
+    ctx.patchState({ grabstellenConfig: payload });
+
+    ctx.dispatch(new ResetVerabschiedungsfeier());
+    ctx.dispatch(new ResetPaketauswahl());
+    ctx.dispatch(new ResetBeguenstiger());
   }
 
   @Action(ChangeVerabschiedungsfeier)
@@ -107,16 +96,9 @@ export class VorsorgeConfigurationState {
     ctx: StateContext<VorsorgeConfigurationStateModel>,
     { payload }: ChangeVerabschiedungsfeier
   ) {
-    ctx.setState({
-      ...ctx.getState(),
-      verabschiedungsfeierConfig: payload,
-      paketauswahlConfig: this.defaultConfig,
-      beguenstigterConfig: this.defaultConfig,
-      zusammenfassungConfig: this.defaultConfig,
-    });
-    alert(
-      'Grabstelle wurde konfiguriert => paketauswahl, begünstigter werden resettet!'
-    );
+    ctx.patchState({ verabschiedungsfeierConfig: payload });
+    ctx.dispatch(new ResetPaketauswahl());
+    ctx.dispatch(new ResetBeguenstiger());
   }
 
   @Action(ChangePaketauswahl)
@@ -124,13 +106,8 @@ export class VorsorgeConfigurationState {
     ctx: StateContext<VorsorgeConfigurationStateModel>,
     { payload }: ChangePaketauswahl
   ) {
-    ctx.setState({
-      ...ctx.getState(),
-      paketauswahlConfig: payload,
-      beguenstigterConfig: this.defaultConfig,
-      zusammenfassungConfig: this.defaultConfig,
-    });
-    alert('Grabstelle wurde konfiguriert => begünstigter werden resettet!');
+    ctx.patchState({ paketauswahlConfig: payload });
+    ctx.dispatch(new ResetBeguenstiger());
   }
 
   @Action(ChangeBeguenstigter)
@@ -138,11 +115,28 @@ export class VorsorgeConfigurationState {
     ctx: StateContext<VorsorgeConfigurationStateModel>,
     { payload }: ChangeBeguenstigter
   ) {
-    ctx.setState({
-      ...ctx.getState(),
-      beguenstigterConfig: payload,
-      zusammenfassungConfig: this.defaultConfig,
-    });
-    alert('nix resettet! (letzter Punkt)');
+    ctx.patchState({ beguenstigterConfig: payload });
+  }
+
+  @Action(ResetGrabstelle)
+  public resetGrabstelle(ctx: StateContext<VorsorgeConfigurationStateModel>) {
+    ctx.patchState({ grabstellenConfig: this.defaultConfig });
+  }
+
+  @Action(ResetVerabschiedungsfeier)
+  public resetVerabschiedungsfeier(
+    ctx: StateContext<VorsorgeConfigurationStateModel>
+  ) {
+    ctx.patchState({ verabschiedungsfeierConfig: this.defaultConfig });
+  }
+
+  @Action(ResetPaketauswahl)
+  public resetPaketauswahl(ctx: StateContext<VorsorgeConfigurationStateModel>) {
+    ctx.patchState({ paketauswahlConfig: this.defaultConfig });
+  }
+
+  @Action(ResetBeguenstiger)
+  public resetBeguenstiger(ctx: StateContext<VorsorgeConfigurationStateModel>) {
+    ctx.patchState({ beguenstigterConfig: this.defaultConfig });
   }
 }

@@ -14,11 +14,6 @@ export class GrabstelleComponent extends AbstractConfiguration<ChangeGrabstelle>
   }
 
   ngOnInit(): void {
-    this.setAction(
-      new ChangeGrabstelle({
-        someBooleanValue: true,
-        someOtherBooleanValue: true,
-      })
-    );
+    this.setAction(new ChangeGrabstelle({ someBooleanValue: true }));
   }
 }

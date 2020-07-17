@@ -15,11 +15,6 @@ export class BeguenstigterComponent
   }
 
   ngOnInit(): void {
-    this.setAction(
-      new ChangeBeguenstigter({
-        someBooleanValue: true,
-        someOtherBooleanValue: true,
-      })
-    );
+    this.setAction(new ChangeBeguenstigter({ someBooleanValue: true }));
   }
 }

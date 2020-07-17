@@ -15,11 +15,6 @@ export class PaketauswahlComponent
   }
 
   ngOnInit(): void {
-    this.setAction(
-      new ChangePaketauswahl({
-        someBooleanValue: true,
-        someOtherBooleanValue: true,
-      })
-    );
+    this.setAction(new ChangePaketauswahl({ someBooleanValue: true }));
   }
 }
