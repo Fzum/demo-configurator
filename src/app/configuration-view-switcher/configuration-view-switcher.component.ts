@@ -4,6 +4,7 @@ import {
   Input,
   ViewChildren,
   QueryList,
+  ViewChild,
 } from '@angular/core';
 import { ConfigurationStepType } from '../model/configurationstep-type';
 import { Store } from '@ngxs/store';
@@ -20,17 +21,17 @@ export class ConfigurationViewSwitcherComponent implements OnInit {
 
   @Input() configurationType: ConfigurationStepType;
 
-  @ViewChildren('abstractConfiguration')
-  abstractConfigurations: QueryList<ConfigruationChangedContract<any>>; // typesafety unknown extends XY
+  @ViewChild('abstractConfiguration')
+  abstractConfigurations: ConfigruationChangedContract<any>; // typesafety unknown extends XY
 
   ngOnInit(): void {}
 
   public handleConfigurationUpdates() {
-    const component: ConfigruationChangedContract<any> = this
-      .abstractConfigurations.first;
+    const activeConfigurationComponent: ConfigruationChangedContract<any> = this
+      .abstractConfigurations;
 
-    if (component.isConfigurationChanged()) {
-      const action: ConfigurationChangeAction = component.getAction();
+    if (activeConfigurationComponent.isConfigurationChanged()) {
+      const action: ConfigurationChangeAction = activeConfigurationComponent.getAction();
       this.store.dispatch(action);
     }
   }
