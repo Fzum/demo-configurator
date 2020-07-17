@@ -6,6 +6,10 @@ import { GrabstelleComponent } from '../configuration-view/grabstelle/grabstelle
 import { Store } from '@ngxs/store';
 import { ConfigruationChangedContract } from '../configuration-view/configuration-changed-contract';
 import { ConfigurationChangeAction } from '../store/vorsorge-configuration.actions';
+import { VerabschiedungsfeierComponent } from '../configuration-view/verabschiedungsfeier/verabschiedungsfeier.component';
+import { PaketauswahlComponent } from '../configuration-view/paketauswahl/paketauswahl.component';
+import { BeguenstigterComponent } from '../configuration-view/beguenstigter/beguenstigter.component';
+import { AbstractConfiguration } from '../configuration-view/abstract-configuration';
 
 @Component({
   selector: 'app-step-by-step-configurer',
@@ -18,6 +22,15 @@ export class StepByStepConfigurerComponent implements OnInit {
 
   @ViewChild(GrabstelleComponent)
   grabstelleComponent: GrabstelleComponent;
+
+  @ViewChild(VerabschiedungsfeierComponent)
+  verabschiedungsfeierComponent: VerabschiedungsfeierComponent;
+
+  @ViewChild(PaketauswahlComponent)
+  paketauswahlComponent: PaketauswahlComponent;
+
+  @ViewChild(BeguenstigterComponent)
+  beguenstigterComponent: BeguenstigterComponent;
 
   configurationIndex: number;
   configurationSteps: ConfigurationStep[];
@@ -53,9 +66,15 @@ export class StepByStepConfigurerComponent implements OnInit {
 
   getActiveViewChild(): any {
     // todo: fix return type to typesafety: something like AbstractConfiguration<any extends ConfigurationChangeAction>
-    return this.bestattungsArtComponent !== null
-      ? this.bestattungsArtComponent
-      : this.grabstelleComponent;
+    const activeViewChild: AbstractConfiguration<any> = [
+      this.bestattungsArtComponent,
+      this.grabstelleComponent,
+      this.verabschiedungsfeierComponent,
+      this.paketauswahlComponent,
+      this.beguenstigterComponent,
+    ].filter((c) => c !== null);
+
+    console.log(activeViewChild);
   }
 
   previous(): void {

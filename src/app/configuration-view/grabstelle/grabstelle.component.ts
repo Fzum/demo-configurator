@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ChangeGrabstelle } from 'src/app/store/vorsorge-configuration.actions';
 import { AbstractConfiguration } from '../abstract-configuration';
 
@@ -13,9 +13,7 @@ export class GrabstelleComponent extends AbstractConfiguration<ChangeGrabstelle>
     super();
   }
 
-  ngOnInit(): void {}
-
-  ngOnDestroy(): void {
+  ngOnInit(): void {
     this.setAction(
       new ChangeGrabstelle({
         someBooleanValue: true,

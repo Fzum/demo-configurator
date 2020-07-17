@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { ChangeBestattungsArt } from '../../store/vorsorge-configuration.actions';
 import { AbstractConfiguration } from '../abstract-configuration';
@@ -15,9 +15,7 @@ export class BestattungsartComponent
     super();
   }
 
-  ngOnInit(): void {}
-
-  ngOnDestroy(): void {
+  ngOnInit(): void {
     this.setAction(
       new ChangeBestattungsArt({
         someBooleanValue: true,

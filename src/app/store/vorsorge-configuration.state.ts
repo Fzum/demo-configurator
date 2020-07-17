@@ -79,5 +79,70 @@ export class VorsorgeConfigurationState {
       beguenstigterConfig: this.defaultConfig,
       zusammenfassungConfig: this.defaultConfig,
     });
+    alert(
+      'Bestattungsart wurde konfiguriert => grabstelle, verabschiedungsfeier, paketauswahl, begünstigter werden resettet!'
+    );
+  }
+
+  @Action(ChangeGrabstelle)
+  public changeGrabstelle(
+    ctx: StateContext<VorsorgeConfigurationStateModel>,
+    { payload }: ChangeGrabstelle
+  ) {
+    ctx.setState({
+      ...ctx.getState(),
+      grabstellenConfig: payload,
+      verabschiedungsfeierConfig: this.defaultConfig,
+      paketauswahlConfig: this.defaultConfig,
+      beguenstigterConfig: this.defaultConfig,
+      zusammenfassungConfig: this.defaultConfig,
+    });
+    alert(
+      'Grabstelle wurde konfiguriert => verabschiedungsfeier, paketauswahl, begünstigter werden resettet!'
+    );
+  }
+
+  @Action(ChangeVerabschiedungsfeier)
+  public changeVerabschiedungsfeier(
+    ctx: StateContext<VorsorgeConfigurationStateModel>,
+    { payload }: ChangeVerabschiedungsfeier
+  ) {
+    ctx.setState({
+      ...ctx.getState(),
+      verabschiedungsfeierConfig: payload,
+      paketauswahlConfig: this.defaultConfig,
+      beguenstigterConfig: this.defaultConfig,
+      zusammenfassungConfig: this.defaultConfig,
+    });
+    alert(
+      'Grabstelle wurde konfiguriert => paketauswahl, begünstigter werden resettet!'
+    );
+  }
+
+  @Action(ChangePaketauswahl)
+  public changePaketauswahl(
+    ctx: StateContext<VorsorgeConfigurationStateModel>,
+    { payload }: ChangePaketauswahl
+  ) {
+    ctx.setState({
+      ...ctx.getState(),
+      paketauswahlConfig: payload,
+      beguenstigterConfig: this.defaultConfig,
+      zusammenfassungConfig: this.defaultConfig,
+    });
+    alert('Grabstelle wurde konfiguriert => begünstigter werden resettet!');
+  }
+
+  @Action(ChangeBeguenstigter)
+  public changeBeguenstigter(
+    ctx: StateContext<VorsorgeConfigurationStateModel>,
+    { payload }: ChangeBeguenstigter
+  ) {
+    ctx.setState({
+      ...ctx.getState(),
+      beguenstigterConfig: payload,
+      zusammenfassungConfig: this.defaultConfig,
+    });
+    alert('nix resettet! (letzter Punkt)');
   }
 }

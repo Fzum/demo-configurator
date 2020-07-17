@@ -1,8 +1,7 @@
 import { ConfigruationChangedContract } from './configuration-changed-contract';
-import { OnDestroy } from '@angular/core';
 
 export abstract class AbstractConfiguration<T>
-  implements ConfigruationChangedContract<T>, OnDestroy {
+  implements ConfigruationChangedContract<T> {
   isChanged: boolean;
   changeAction: T;
 
@@ -21,6 +20,4 @@ export abstract class AbstractConfiguration<T>
   getAction(): T {
     return this.changeAction;
   }
-
-  abstract ngOnDestroy(): void;
 }
