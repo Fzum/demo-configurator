@@ -51,11 +51,7 @@ export class StepByStepConfigurerComponent implements OnInit {
   }
 
   next(): void {
-    const component: ConfigruationChangedContract<any> = this.getActiveViewChild();
-    if (component.isConfigurationChanged()) {
-      const action: ConfigurationChangeAction = component.getAction();
-      this.store.dispatch(action);
-    }
+    this.handleConfigurationUpdates();
 
     if (this.configurationIndex < this.configurationSteps.length - 1) {
       this.configurationIndex++;
@@ -64,26 +60,22 @@ export class StepByStepConfigurerComponent implements OnInit {
     this.setActiveConfiguration();
   }
 
-  getActiveViewChild(): any {
-    // todo: fix return type to typesafety: something like AbstractConfiguration<any extends ConfigurationChangeAction>
-    const activeViewChild: AbstractConfiguration<
-      ConfigurationChangeAction
-    >[] = [
+  private handleConfigurationUpdates() {
+    const component: ConfigruationChangedContract<any> = this.getActiveViewChild();
+    if (component.isConfigurationChanged()) {
+      const action: ConfigurationChangeAction = component.getAction();
+      this.store.dispatch(action);
+    }
+  }
+
+  getActiveViewChild(): AbstractConfiguration<ConfigurationChangeAction> {
+    return [
       this.bestattungsArtComponent,
       this.grabstelleComponent,
       this.verabschiedungsfeierComponent,
       this.paketauswahlComponent,
       this.beguenstigterComponent,
-    ];
-
-    const lastActiveConfiguration: AbstractConfiguration<ConfigurationChangeAction> = activeViewChild.filter(
-      (c) => c !== undefined
-    )[0];
-
-    console.log('als letztes war folgendes ViewChild aktiv');
-    console.log(lastActiveConfiguration);
-
-    return lastActiveConfiguration;
+    ].filter((c) => c !== undefined)[0];
   }
 
   previous(): void {
