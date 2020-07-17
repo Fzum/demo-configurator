@@ -1,4 +1,7 @@
-export interface ConfigruationChangedContract {
+export interface ConfigruationChangedContract<T> {
+  setConfigurationChanged(): void;
   getIsConfigurationChanged(): boolean;
-  getActionToDispatch(): any;
+
+  setChangedAction(action: T): void;
+  getChangedAction(): T;
 }

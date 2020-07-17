@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ChangeBestattungsArt } from '../../store/vorsorge-configuration.actions';
 import { ConfigruationChangedContract } from '../configuration-changed-contract';
+import { AbstractConfiguration } from '../abstract-configuration';
 
 @Component({
   selector: 'app-bestattungsart',
@@ -9,25 +10,13 @@ import { ConfigruationChangedContract } from '../configuration-changed-contract'
   styleUrls: ['./bestattungsart.component.scss'],
 })
 export class BestattungsartComponent
-  implements OnInit, ConfigruationChangedContract {
+  extends AbstractConfiguration<ChangeBestattungsArt>
+  implements OnInit {
   private isConfigurationChanged: boolean;
 
-  constructor() {}
+  constructor() {
+    super();
+  }
 
   ngOnInit(): void {}
-
-  getIsConfigurationChanged(): boolean {
-    return this.isConfigurationChanged;
-  }
-
-  getActionToDispatch() {
-    return new ChangeBestattungsArt({
-      someBooleanValue: true,
-      someOtherBooleanValue: true,
-    });
-  }
-
-  simulateBestattungsartChange(): void {
-    this.isConfigurationChanged = true;
-  }
 }

@@ -5,6 +5,8 @@ import { BestattungsartComponent } from '../configuration-view/bestattungsart/be
 import { GrabstelleComponent } from '../configuration-view/grabstelle/grabstelle.component';
 import { ConfigruationChangedContract } from '../configuration-view/configuration-changed-contract';
 import { Store } from '@ngxs/store';
+import { AbstractConfiguration } from '../configuration-view/abstract-configuration';
+import { ConfigurationChangeAction } from '../store/vorsorge-configuration.actions';
 
 @Component({
   selector: 'app-step-by-step-configurer',
@@ -37,9 +39,9 @@ export class StepByStepConfigurerComponent implements OnInit {
   }
 
   next(): void {
-    const component: ConfigruationChangedContract = this.getActiveViewChild();
-    if (component.getIsConfigurationChanged) {
-      this.store.dispatch(component.getActionToDispatch());
+    const component = this.getActiveViewChild();
+    if (component.getIsConfigurationChanged()) {
+      this.store.dispatch(component.getChangedAction());
     }
 
     if (this.configurationIndex < this.configurationSteps.length - 1) {
@@ -49,7 +51,8 @@ export class StepByStepConfigurerComponent implements OnInit {
     this.setActiveConfiguration();
   }
 
-  getActiveViewChild(): ConfigruationChangedContract {
+  getActiveViewChild(): any {
+    // todo: fix return type to typesafety: something like AbstractConfiguration<any extends ConfigurationChangeAction>
     return this.bestattungsArtComponent !== null
       ? this.bestattungsArtComponent
       : this.grabstelleComponent;
