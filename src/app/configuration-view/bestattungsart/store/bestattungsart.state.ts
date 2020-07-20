@@ -1,7 +1,7 @@
 import { State, Action, Selector, StateContext } from '@ngxs/store';
 import { ChangeBestattungsart } from './bestattungsart.actions';
-import { BestattungsArtConfig } from '../../model/dummy-config.model';
-import { ResetGrabstelle } from '../vorsorge-reset-actions';
+import { BestattungsArtConfig } from '../../../model/dummy-config.model';
+import { ResetGrabstelle } from '../../shared/vorsorge-reset-actions';
 
 export interface BestattungsartStateModel {
   config: BestattungsArtConfig;

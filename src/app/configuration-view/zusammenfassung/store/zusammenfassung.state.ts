@@ -1,6 +1,6 @@
 import { State, Action, Selector, StateContext } from '@ngxs/store';
 import { ZusammenfassungAction } from './zusammenfassung.actions';
-import { ZusammenfassungConfig } from '../../model/dummy-config.model';
+import { ZusammenfassungConfig } from '../../../model/dummy-config.model';
 
 export interface ZusammenfassungStateModel {
   config: ZusammenfassungConfig;

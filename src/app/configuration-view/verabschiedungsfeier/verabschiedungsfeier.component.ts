@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractConfiguration } from '../abstract-configuration';
-import { ChangeVerabschiedungsfeier } from 'src/app/store/verabschiedungsfeier/verabschiedungsfeier.actions';
+import { ChangeVerabschiedungsfeier } from './store/verabschiedungsfeier.actions';
 
 @Component({
   selector: 'app-verabschiedungsfeier',

@@ -1,10 +1,10 @@
 import { State, Action, Selector, StateContext } from '@ngxs/store';
 import { ChangePaketauswahl } from './paketauswahl.actions';
-import { PaketauswahlConfig } from '../../model/dummy-config.model';
+import { PaketauswahlConfig } from '../../../model/dummy-config.model';
 import {
   ResetBeguenstiger,
   ResetPaketauswahl,
-} from '../vorsorge-reset-actions';
+} from '../../shared/vorsorge-reset-actions';
 
 export interface PaketauswahlStateModel {
   config: PaketauswahlConfig;

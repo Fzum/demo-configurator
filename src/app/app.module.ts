@@ -18,13 +18,12 @@ import { BeguenstigterComponent } from './configuration-view/beguenstigter/begue
 import { ZusammenfassungComponent } from './configuration-view/zusammenfassung/zusammenfassung.component';
 
 import { ConfigurationViewSwitcherComponent } from './configuration-view-switcher/configuration-view-switcher.component';
-
-import { BeguenstigterState } from './store/beguenstigter/beguenstigter.state';
-import { BestattungsartState } from './store/bestattungsart/bestattungsart.state';
-import { GrabstelleState } from './store/grabstelle/grabstelle.state';
-import { PaketauswahlState } from './store/paketauswahl/paketauswahl.state';
-import { VerabschiedungsfeierState } from './store/verabschiedungsfeier/verabschiedungsfeier.state';
-import { ZusammenfassungState } from './store/zusammenfassung/zusammenfassung.state';
+import { BeguenstigterState } from './configuration-view/beguenstigter/store/beguenstigter.state';
+import { BestattungsartState } from './configuration-view/bestattungsart/store/bestattungsart.state';
+import { GrabstelleState } from './configuration-view/grabstelle/store/grabstelle.state';
+import { PaketauswahlState } from './configuration-view/paketauswahl/store/paketauswahl.state';
+import { VerabschiedungsfeierState } from './configuration-view/verabschiedungsfeier/store/verabschiedungsfeier.state';
+import { ZusammenfassungState } from './configuration-view/zusammenfassung/store/zusammenfassung.state';
 
 const configurationStates = [
   BeguenstigterState,

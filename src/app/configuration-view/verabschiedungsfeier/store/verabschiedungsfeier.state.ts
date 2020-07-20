@@ -1,10 +1,10 @@
 import { State, Action, Selector, StateContext } from '@ngxs/store';
 import { ChangeVerabschiedungsfeier } from './verabschiedungsfeier.actions';
-import { VerabschiedungsfeierConfig } from '../../model/dummy-config.model';
+import { VerabschiedungsfeierConfig } from '../../../model/dummy-config.model';
 import {
   ResetPaketauswahl,
   ResetVerabschiedungsfeier,
-} from '../vorsorge-reset-actions';
+} from '../../shared/vorsorge-reset-actions';
 
 export interface VerabschiedungsfeierStateModel {
   config: VerabschiedungsfeierConfig;

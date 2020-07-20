@@ -1,7 +1,7 @@
 import { State, Action, StateContext } from '@ngxs/store';
 import { ChangeBeguenstigter } from './beguenstigter.actions';
-import { BeguenstigterConfig } from '../../model/dummy-config.model';
-import { ResetBeguenstiger } from '../vorsorge-reset-actions';
+import { BeguenstigterConfig } from '../../../model/dummy-config.model';
+import { ResetBeguenstiger } from '../../shared/vorsorge-reset-actions';
 
 export interface BeguenstigterStateModel {
   config: BeguenstigterConfig;

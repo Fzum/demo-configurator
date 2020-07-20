@@ -1,10 +1,10 @@
 import { State, Action, StateContext } from '@ngxs/store';
 import { ChangeGrabstelle } from './grabstelle.actions';
-import { GrabstellenConfig } from '../../model/dummy-config.model';
+import { GrabstellenConfig } from '../../../model/dummy-config.model';
 import {
   ResetVerabschiedungsfeier,
   ResetGrabstelle,
-} from '../vorsorge-reset-actions';
+} from '../../shared/vorsorge-reset-actions';
 
 export interface GrabstelleStateModel {
   config: GrabstellenConfig;

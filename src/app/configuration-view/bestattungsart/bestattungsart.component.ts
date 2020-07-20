@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChangeBestattungsart } from '../../store/bestattungsart/bestattungsart.actions';
+import { ChangeBestattungsart } from './store/bestattungsart.actions';
 import { AbstractConfiguration } from '../abstract-configuration';
 
 @Component({

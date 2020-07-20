@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ConfigurationStepType } from '../model/configurationstep-type';
 import { Store } from '@ngxs/store';
 import { ConfigruationChangedContract } from '../configuration-view/configuration-changed-contract';
-import { ConfigurationChangeAction } from '../store/vorsorge-configuration.actions';
+import { ConfigurationChangeAction } from '../configuration-view/shared/vorsorge-configuration.actions';
 
 @Component({
   selector: 'app-configuration-view-switcher',

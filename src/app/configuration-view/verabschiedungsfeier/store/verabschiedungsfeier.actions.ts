@@ -1,5 +1,5 @@
-import { ConfigurationChangeAction } from '../vorsorge-configuration.actions';
-import { VerabschiedungsfeierConfig } from '../../model/dummy-config.model';
+import { ConfigurationChangeAction } from '../../shared/vorsorge-configuration.actions';
+import { VerabschiedungsfeierConfig } from '../../../model/dummy-config.model';
 
 export class ChangeVerabschiedungsfeier implements ConfigurationChangeAction {
   public static readonly type =

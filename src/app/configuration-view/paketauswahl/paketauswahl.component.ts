@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChangePaketauswahl } from 'src/app/store/paketauswahl/paketauswahl.actions';
+import { ChangePaketauswahl } from './store/paketauswahl.actions';
 import { AbstractConfiguration } from '../abstract-configuration';
 
 @Component({

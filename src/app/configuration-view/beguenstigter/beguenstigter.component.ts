@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ChangeBeguenstigter } from 'src/app/store/beguenstigter/beguenstigter.actions';
+import { ChangeBeguenstigter } from 'src/app/configuration-view/beguenstigter/store/beguenstigter.actions';
 import { AbstractConfiguration } from '../abstract-configuration';
 import { Select } from '@ngxs/store';
 import {
   BeguenstigterState,
   BeguenstigterStateModel,
-} from 'src/app/store/beguenstigter/beguenstigter.state';
+} from 'src/app/configuration-view/beguenstigter/store/beguenstigter.state';
 import { Observable } from 'rxjs';
 
 @Component({
