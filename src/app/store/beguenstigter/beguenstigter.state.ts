@@ -1,4 +1,4 @@
-import { State, Action, Selector, StateContext } from '@ngxs/store';
+import { State, Action, StateContext } from '@ngxs/store';
 import { ChangeBeguenstigter } from './beguenstigter.actions';
 import { BeguenstigterConfig } from '../../model/dummy-config.model';
 import { ResetBeguenstiger } from '../vorsorge-reset-actions';
