@@ -17,8 +17,23 @@ import { PaketauswahlComponent } from './configuration-view/paketauswahl/paketau
 import { BeguenstigterComponent } from './configuration-view/beguenstigter/beguenstigter.component';
 import { ZusammenfassungComponent } from './configuration-view/zusammenfassung/zusammenfassung.component';
 
-import { VorsorgeConfigurationState } from './store/vorsorge-configuration.state';
 import { ConfigurationViewSwitcherComponent } from './configuration-view-switcher/configuration-view-switcher.component';
+
+import { BeguenstigterState } from './store/beguenstigter/beguenstigter.state';
+import { BestattungsartState } from './store/bestattungsart/bestattungsart.state';
+import { GrabstelleState } from './store/grabstelle/grabstelle.state';
+import { PaketauswahlState } from './store/paketauswahl/paketauswahl.state';
+import { VerabschiedungsfeierState } from './store/verabschiedungsfeier/verabschiedungsfeier.state';
+import { ZusammenfassungState } from './store/zusammenfassung/zusammenfassung.state';
+
+const configurationStates = [
+  BeguenstigterState,
+  BestattungsartState,
+  GrabstelleState,
+  PaketauswahlState,
+  VerabschiedungsfeierState,
+  ZusammenfassungState,
+];
 
 @NgModule({
   declarations: [
@@ -37,7 +52,7 @@ import { ConfigurationViewSwitcherComponent } from './configuration-view-switche
     AppRoutingModule,
     FlexLayoutModule,
     [
-      NgxsModule.forRoot([VorsorgeConfigurationState]),
+      NgxsModule.forRoot(configurationStates),
       NgxsReduxDevtoolsPluginModule.forRoot(),
     ],
   ],

@@ -1,6 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-
-import { ChangeBestattungsArt } from '../../store/vorsorge-configuration.actions';
+import { Component, OnInit } from '@angular/core';
+import { ChangeBestattungsart } from '../../store/bestattungsart/bestattungsart.actions';
 import { AbstractConfiguration } from '../abstract-configuration';
 
 @Component({
@@ -9,13 +8,13 @@ import { AbstractConfiguration } from '../abstract-configuration';
   styleUrls: ['./bestattungsart.component.scss'],
 })
 export class BestattungsartComponent
-  extends AbstractConfiguration<ChangeBestattungsArt>
+  extends AbstractConfiguration<ChangeBestattungsart>
   implements OnInit {
   constructor() {
     super();
   }
 
   ngOnInit(): void {
-    this.setAction(new ChangeBestattungsArt({ someBooleanValue: true }));
+    this.setAction(new ChangeBestattungsart({ someBooleanValue: true }));
   }
 }

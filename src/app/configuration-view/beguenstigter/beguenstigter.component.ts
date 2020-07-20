@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChangeBeguenstigter } from 'src/app/store/vorsorge-configuration.actions';
+import { ChangeBeguenstigter } from 'src/app/store/beguenstigter/beguenstigter.actions';
 import { AbstractConfiguration } from '../abstract-configuration';
 
 @Component({

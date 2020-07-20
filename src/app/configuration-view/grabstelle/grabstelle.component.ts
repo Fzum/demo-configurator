@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ChangeGrabstelle } from 'src/app/store/vorsorge-configuration.actions';
+import { ChangeGrabstelle } from 'src/app/store/grabstelle/grabstelle.actions';
 import { AbstractConfiguration } from '../abstract-configuration';
 
 @Component({
