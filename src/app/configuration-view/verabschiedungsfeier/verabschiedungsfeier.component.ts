@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractConfiguration } from '../abstract-configuration';
-import { ChangeVerabschiedungsfeier } from './store/verabschiedungsfeier.actions';
 import { FormBuilder } from '@angular/forms';
 import { VerabschiedungsfeierState } from './store/verabschiedungsfeier.state';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
+import { ResetPaketauswahl } from '../shared/vorsorge-reset-actions';
 
 @Component({
   selector: 'app-verabschiedungsfeier',
@@ -12,10 +12,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./verabschiedungsfeier.component.scss'],
 })
 export class VerabschiedungsfeierComponent
-  extends AbstractConfiguration<ChangeVerabschiedungsfeier>
+  extends AbstractConfiguration<ResetPaketauswahl>
   implements OnInit {
   constructor(private fb: FormBuilder) {
-    super();
+    super(new ResetPaketauswahl());
   }
 
   @Select(VerabschiedungsfeierState.model) formModel: Observable<any>;
