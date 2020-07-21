@@ -1,4 +1,4 @@
-import { State, Action, StateContext } from '@ngxs/store';
+import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { ChangeGrabstelle } from './grabstelle.actions';
 import { GrabstellenConfig } from '../../../model/dummy-config.model';
 import {
@@ -15,6 +15,11 @@ export interface GrabstelleStateModel {
   defaults: { model: { inputOne: '', inputTwo: '' } },
 })
 export class GrabstelleState {
+  @Selector()
+  static model(state: GrabstelleStateModel) {
+    return state.model;
+  }
+
   @Action(ChangeGrabstelle)
   public changeGrabstelle(
     ctx: StateContext<GrabstelleStateModel>,

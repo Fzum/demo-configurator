@@ -15,6 +15,11 @@ export interface PaketauswahlStateModel {
   defaults: { model: { inputOne: '', inputTwo: '' } },
 })
 export class PaketauswahlState {
+  @Selector()
+  static model(state: PaketauswahlStateModel) {
+    return state.model;
+  }
+
   @Action(ChangePaketauswahl)
   public changePaketauswahl(
     ctx: StateContext<PaketauswahlStateModel>,

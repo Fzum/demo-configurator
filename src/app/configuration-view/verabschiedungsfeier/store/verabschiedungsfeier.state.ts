@@ -15,6 +15,11 @@ export interface VerabschiedungsfeierStateModel {
   defaults: { model: { inputOne: '', inputTwo: '' } },
 })
 export class VerabschiedungsfeierState {
+  @Selector()
+  static model(state: VerabschiedungsfeierStateModel) {
+    return state.model;
+  }
+
   @Action(ChangeVerabschiedungsfeier)
   public changeVerabschiedungsfeier(
     ctx: StateContext<VerabschiedungsfeierStateModel>,

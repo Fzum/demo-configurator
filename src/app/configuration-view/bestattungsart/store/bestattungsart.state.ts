@@ -12,6 +12,11 @@ export interface BestattungsartStateModel {
   defaults: { model: { inputOne: '', inputTwo: '' } },
 })
 export class BestattungsartState {
+  @Selector()
+  static model(state: BestattungsartStateModel) {
+    return state.model;
+  }
+
   @Action(ChangeBestattungsart)
   public changeBestattungsart(
     ctx: StateContext<BestattungsartStateModel>,
