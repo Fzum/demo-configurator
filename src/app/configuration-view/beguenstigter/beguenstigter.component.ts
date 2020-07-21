@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ChangeBeguenstigter } from 'src/app/configuration-view/beguenstigter/store/beguenstigter.actions';
 import { AbstractConfiguration } from '../abstract-configuration';
 import { FormBuilder } from '@angular/forms';
 import { BeguenstigterState } from './store/beguenstigter.state';
@@ -11,12 +10,8 @@ import { Observable } from 'rxjs';
   templateUrl: './beguenstigter.component.html',
   styleUrls: ['./beguenstigter.component.scss'],
 })
-export class BeguenstigterComponent
-  extends AbstractConfiguration<ChangeBeguenstigter>
-  implements OnInit {
-  constructor(private fb: FormBuilder) {
-    super();
-  }
+export class BeguenstigterComponent implements OnInit {
+  constructor(private fb: FormBuilder) {}
 
   @Select(BeguenstigterState.model) formModel: Observable<any>;
   @Select(BeguenstigterState) wholeForm: Observable<any>;

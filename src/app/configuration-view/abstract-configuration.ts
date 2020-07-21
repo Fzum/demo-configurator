@@ -1,9 +1,13 @@
 import { ConfigruationChangedContract } from './configuration-changed-contract';
 
-export abstract class AbstractConfiguration<T>
+export class AbstractConfiguration<T>
   implements ConfigruationChangedContract<T> {
   isChanged: boolean = false;
   changeAction: T;
+
+  constructor(action: T) {
+    this.changeAction = action;
+  }
 
   markConfigurationAsChanged(): void {
     this.isChanged = true;
@@ -11,10 +15,6 @@ export abstract class AbstractConfiguration<T>
 
   isConfigurationChanged(): boolean {
     return this.isChanged;
-  }
-
-  setAction(action: T): void {
-    this.changeAction = action;
   }
 
   getAction(): T {

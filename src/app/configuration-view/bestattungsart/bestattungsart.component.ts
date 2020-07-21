@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ChangeBestattungsart } from './store/bestattungsart.actions';
 import { AbstractConfiguration } from '../abstract-configuration';
 import { FormBuilder } from '@angular/forms';
 import { Select } from '@ngxs/store';
 import { BestattungsartState } from './store/bestattungsart.state';
 import { Observable } from 'rxjs';
+import { ResetGrabstelle } from '../shared/vorsorge-reset-actions';
 
 @Component({
   selector: 'app-bestattungsart',
@@ -12,10 +12,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./bestattungsart.component.scss'],
 })
 export class BestattungsartComponent
-  extends AbstractConfiguration<ChangeBestattungsart>
+  extends AbstractConfiguration<ResetGrabstelle>
   implements OnInit {
   constructor(private fb: FormBuilder) {
-    super();
+    super(new ResetGrabstelle());
   }
 
   @Select(BestattungsartState.model) formModel: Observable<any>;

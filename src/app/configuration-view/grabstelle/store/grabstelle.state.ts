@@ -1,5 +1,4 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { ChangeGrabstelle } from './grabstelle.actions';
 import { GrabstellenConfig } from '../../../model/dummy-config.model';
 import {
   ResetVerabschiedungsfeier,
@@ -18,15 +17,6 @@ export class GrabstelleState {
   @Selector()
   static model(state: GrabstelleStateModel) {
     return state.model;
-  }
-
-  @Action(ChangeGrabstelle)
-  public changeGrabstelle(
-    ctx: StateContext<GrabstelleStateModel>,
-    { payload }: ChangeGrabstelle
-  ) {
-    ctx.patchState({ model: payload });
-    ctx.dispatch(new ResetVerabschiedungsfeier());
   }
 
   @Action(ResetGrabstelle)

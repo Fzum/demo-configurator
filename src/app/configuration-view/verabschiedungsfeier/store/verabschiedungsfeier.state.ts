@@ -1,5 +1,4 @@
 import { State, Action, Selector, StateContext } from '@ngxs/store';
-import { ChangeVerabschiedungsfeier } from './verabschiedungsfeier.actions';
 import { VerabschiedungsfeierConfig } from '../../../model/dummy-config.model';
 import {
   ResetPaketauswahl,
@@ -18,15 +17,6 @@ export class VerabschiedungsfeierState {
   @Selector()
   static model(state: VerabschiedungsfeierStateModel) {
     return state.model;
-  }
-
-  @Action(ChangeVerabschiedungsfeier)
-  public changeVerabschiedungsfeier(
-    ctx: StateContext<VerabschiedungsfeierStateModel>,
-    { payload }: ChangeVerabschiedungsfeier
-  ) {
-    ctx.patchState({ model: payload });
-    ctx.dispatch(new ResetPaketauswahl());
   }
 
   @Action(ResetVerabschiedungsfeier)
