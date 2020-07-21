@@ -1,23 +1,27 @@
 import { ConfigruationChangedContract } from './configuration-changed-contract';
+import { Observable } from 'rxjs';
 
 export class AbstractConfiguration<T>
   implements ConfigruationChangedContract<T> {
-  isChanged: boolean = false;
-  changeAction: T;
+  resetAction: T;
+  resetPath: string;
+  form: Observable<any>;
 
-  constructor(action: T) {
-    this.changeAction = action;
-  }
-
-  markConfigurationAsChanged(): void {
-    this.isChanged = true;
-  }
-
-  isConfigurationChanged(): boolean {
-    return this.isChanged;
+  constructor(action: T, resetPath: string, form: Observable<any>) {
+    this.resetAction = action;
+    this.resetPath = resetPath;
+    this.form = form;
   }
 
   getAction(): T {
-    return this.changeAction;
+    return this.resetAction;
+  }
+
+  getForm() {
+    return this.form;
+  }
+
+  getResetPath(): string {
+    return this.resetPath;
   }
 }
