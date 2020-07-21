@@ -3,12 +3,12 @@ import { ZusammenfassungAction } from './zusammenfassung.actions';
 import { ZusammenfassungConfig } from '../../../model/dummy-config.model';
 
 export interface ZusammenfassungStateModel {
-  config: ZusammenfassungConfig;
+  model: ZusammenfassungConfig;
 }
 
 @State<ZusammenfassungStateModel>({
   name: 'zusammenfassung',
-  defaults: { config: { someBooleanValue: undefined } },
+  defaults: { model: { inputOne: '', inputTwo: '' } },
 })
 export class ZusammenfassungState {
   @Action(ZusammenfassungAction)

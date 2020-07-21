@@ -7,12 +7,12 @@ import {
 } from '../../shared/vorsorge-reset-actions';
 
 export interface VerabschiedungsfeierStateModel {
-  config: VerabschiedungsfeierConfig;
+  model: VerabschiedungsfeierConfig;
 }
 
 @State<VerabschiedungsfeierStateModel>({
   name: 'verabschiedungsfeier',
-  defaults: { config: { someBooleanValue: undefined } },
+  defaults: { model: { inputOne: '', inputTwo: '' } },
 })
 export class VerabschiedungsfeierState {
   @Action(ChangeVerabschiedungsfeier)
@@ -20,7 +20,7 @@ export class VerabschiedungsfeierState {
     ctx: StateContext<VerabschiedungsfeierStateModel>,
     { payload }: ChangeVerabschiedungsfeier
   ) {
-    ctx.patchState({ config: payload });
+    ctx.patchState({ model: payload });
     ctx.dispatch(new ResetPaketauswahl());
   }
 
@@ -28,7 +28,7 @@ export class VerabschiedungsfeierState {
   public resetVarabschiedungsfeier(
     ctx: StateContext<VerabschiedungsfeierStateModel>
   ) {
-    ctx.setState({ config: undefined });
+    ctx.setState({ model: undefined });
     ctx.dispatch(new ResetPaketauswahl());
   }
 }

@@ -24,6 +24,8 @@ import { GrabstelleState } from './configuration-view/grabstelle/store/grabstell
 import { PaketauswahlState } from './configuration-view/paketauswahl/store/paketauswahl.state';
 import { VerabschiedungsfeierState } from './configuration-view/verabschiedungsfeier/store/verabschiedungsfeier.state';
 import { ZusammenfassungState } from './configuration-view/zusammenfassung/store/zusammenfassung.state';
+import { NgxsFormPluginModule } from '@ngxs/form-plugin';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const configurationStates = [
   BeguenstigterState,
@@ -50,9 +52,11 @@ const configurationStates = [
     BrowserModule,
     AppRoutingModule,
     FlexLayoutModule,
+    ReactiveFormsModule,
     [
       NgxsModule.forRoot(configurationStates),
       NgxsReduxDevtoolsPluginModule.forRoot(),
+      NgxsFormPluginModule.forRoot(),
     ],
   ],
   providers: [],

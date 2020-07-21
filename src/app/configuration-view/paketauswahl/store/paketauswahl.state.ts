@@ -7,12 +7,12 @@ import {
 } from '../../shared/vorsorge-reset-actions';
 
 export interface PaketauswahlStateModel {
-  config: PaketauswahlConfig;
+  model: PaketauswahlConfig;
 }
 
 @State<PaketauswahlStateModel>({
   name: 'paketauswahl',
-  defaults: { config: { someBooleanValue: undefined } },
+  defaults: { model: { inputOne: '', inputTwo: '' } },
 })
 export class PaketauswahlState {
   @Action(ChangePaketauswahl)
@@ -20,13 +20,13 @@ export class PaketauswahlState {
     ctx: StateContext<PaketauswahlStateModel>,
     { payload }: ChangePaketauswahl
   ) {
-    ctx.patchState({ config: payload });
+    ctx.patchState({ model: payload });
     ctx.dispatch(new ResetBeguenstiger());
   }
 
   @Action(ResetPaketauswahl)
   public resetPaketauswahl(ctx: StateContext<PaketauswahlStateModel>) {
-    ctx.setState({ config: undefined });
+    ctx.setState({ model: undefined });
     ctx.dispatch(new ResetBeguenstiger());
   }
 }

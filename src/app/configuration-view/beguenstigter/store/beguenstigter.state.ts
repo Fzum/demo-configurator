@@ -4,12 +4,14 @@ import { BeguenstigterConfig } from '../../../model/dummy-config.model';
 import { ResetBeguenstiger } from '../../shared/vorsorge-reset-actions';
 
 export interface BeguenstigterStateModel {
-  config: BeguenstigterConfig;
+  model: BeguenstigterConfig;
 }
 
 @State<BeguenstigterStateModel>({
   name: 'beguenstigter',
-  defaults: { config: { someBooleanValue: undefined } },
+  defaults: {
+    model: { inputOne: '', inputTwo: '' },
+  },
 })
 export class BeguenstigterState {
   @Action(ChangeBeguenstigter)
@@ -17,7 +19,7 @@ export class BeguenstigterState {
     ctx: StateContext<BeguenstigterStateModel>,
     { payload }: ChangeBeguenstigter
   ) {
-    ctx.patchState({ config: payload });
+    ctx.patchState({ model: payload });
   }
 
   @Action(ResetBeguenstiger)

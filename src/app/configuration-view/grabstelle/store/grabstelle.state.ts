@@ -7,12 +7,12 @@ import {
 } from '../../shared/vorsorge-reset-actions';
 
 export interface GrabstelleStateModel {
-  config: GrabstellenConfig;
+  model: GrabstellenConfig;
 }
 
 @State<GrabstelleStateModel>({
   name: 'grabstelle',
-  defaults: { config: { someBooleanValue: undefined } },
+  defaults: { model: { inputOne: '', inputTwo: '' } },
 })
 export class GrabstelleState {
   @Action(ChangeGrabstelle)
@@ -20,13 +20,13 @@ export class GrabstelleState {
     ctx: StateContext<GrabstelleStateModel>,
     { payload }: ChangeGrabstelle
   ) {
-    ctx.patchState({ config: payload });
+    ctx.patchState({ model: payload });
     ctx.dispatch(new ResetVerabschiedungsfeier());
   }
 
   @Action(ResetGrabstelle)
   public resetGrabstelle(ctx: StateContext<GrabstelleStateModel>) {
-    ctx.setState({ config: undefined });
+    ctx.setState({ model: undefined });
     ctx.dispatch(new ResetVerabschiedungsfeier());
   }
 }

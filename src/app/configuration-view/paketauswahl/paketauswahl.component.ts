@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChangePaketauswahl } from './store/paketauswahl.actions';
 import { AbstractConfiguration } from '../abstract-configuration';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-paketauswahl',
@@ -10,11 +11,15 @@ import { AbstractConfiguration } from '../abstract-configuration';
 export class PaketauswahlComponent
   extends AbstractConfiguration<ChangePaketauswahl>
   implements OnInit {
-  constructor() {
-    super();
-  }
+    constructor(private fb: FormBuilder) {
+      super();
+    }
+
+    form = this.fb.group({
+      inputOne: this.fb.control(''),
+      inputTwo: this.fb.control(''),
+    });
 
   ngOnInit(): void {
-    this.setAction(new ChangePaketauswahl({ someBooleanValue: true }));
   }
 }

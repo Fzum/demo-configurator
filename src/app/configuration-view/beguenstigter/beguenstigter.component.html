@@ -1,4 +1,4 @@
-<p>beguenstigter works!</p>
-<button (click)="markConfigurationAsChanged()">
-  Mark Configuration as Changed
-</button>
+<form fxLayoutAlign="space-between" [formGroup]="form">
+  <input fxFlex formControlName="inputOne" type="text" />
+  <input fxFlex formControlName="inputTwo" type="text" />
+</form>

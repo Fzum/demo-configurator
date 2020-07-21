@@ -4,12 +4,12 @@ import { BestattungsArtConfig } from '../../../model/dummy-config.model';
 import { ResetGrabstelle } from '../../shared/vorsorge-reset-actions';
 
 export interface BestattungsartStateModel {
-  config: BestattungsArtConfig;
+  model: BestattungsArtConfig;
 }
 
 @State<BestattungsartStateModel>({
   name: 'bestattungsart',
-  defaults: { config: { someBooleanValue: undefined } },
+  defaults: { model: { inputOne: '', inputTwo: '' } },
 })
 export class BestattungsartState {
   @Action(ChangeBestattungsart)
@@ -17,7 +17,7 @@ export class BestattungsartState {
     ctx: StateContext<BestattungsartStateModel>,
     { payload }: ChangeBestattungsart
   ) {
-    ctx.patchState({ config: payload });
+    ctx.patchState({ model: payload });
     ctx.dispatch(new ResetGrabstelle());
   }
 }
