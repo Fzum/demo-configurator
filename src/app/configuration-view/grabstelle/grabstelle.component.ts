@@ -3,7 +3,7 @@ import { AbstractConfiguration } from '../abstract-configuration';
 import { FormBuilder } from '@angular/forms';
 import { GrabstelleState } from './store/grabstelle.state';
 import { Observable, of } from 'rxjs';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { ResetVerabschiedungsfeier } from '../shared/vorsorge-reset-actions';
 
 @Component({
@@ -14,8 +14,12 @@ import { ResetVerabschiedungsfeier } from '../shared/vorsorge-reset-actions';
 export class GrabstelleComponent
   extends AbstractConfiguration<ResetVerabschiedungsfeier>
   implements OnInit {
-  constructor(private fb: FormBuilder) {
-    super(new ResetVerabschiedungsfeier(), '', of());
+  constructor(private fb: FormBuilder, private store: Store) {
+    super(
+      new ResetVerabschiedungsfeier(),
+      'grabstelle',
+      store.select((state) => state.grabstelle)
+    );
   }
 
   @Select(GrabstelleState.model) formModel: Observable<any>;

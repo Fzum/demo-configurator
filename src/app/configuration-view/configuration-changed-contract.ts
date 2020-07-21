@@ -1,5 +1,7 @@
+import { Observable } from 'rxjs';
+
 export interface ConfigruationChangedContract<T> {
   getResetAction(): T;
-  getForm(): any;
+  getForm(): Observable<any>;
   getResetPath(): string;
 }

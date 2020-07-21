@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { AbstractConfiguration } from '../abstract-configuration';
 import { FormBuilder } from '@angular/forms';
 import { Select, Store } from '@ngxs/store';
 import { BestattungsartState } from './store/bestattungsart.state';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { ResetGrabstelle } from '../shared/vorsorge-reset-actions';
 
 @Component({

@@ -19,10 +19,15 @@ export class AbstractConfiguration<T>
   }
 
   getForm() {
-    return this.form.pipe(last());
+    return this.form;
+    //.pipe(last()
   }
 
   getResetPath(): string {
     return this.resetPath;
+  }
+
+  setForm(form: Observable<any>) {
+    this.form = form;
   }
 }

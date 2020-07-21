@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractConfiguration } from '../abstract-configuration';
 import { FormBuilder } from '@angular/forms';
 import { PaketauswahlState } from './store/paketauswahl.state';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Observable, of } from 'rxjs';
 import { ResetBeguenstiger } from '../shared/vorsorge-reset-actions';
 
@@ -14,8 +14,12 @@ import { ResetBeguenstiger } from '../shared/vorsorge-reset-actions';
 export class PaketauswahlComponent
   extends AbstractConfiguration<ResetBeguenstiger>
   implements OnInit {
-  constructor(private fb: FormBuilder) {
-    super(new ResetBeguenstiger(), '', of());
+  constructor(private fb: FormBuilder, private store: Store) {
+    super(
+      new ResetBeguenstiger(),
+      'paketauswahl',
+      store.select((state) => state.paketauswahl)
+    );
   }
 
   @Select(PaketauswahlState.model) formModel: Observable<any>;
