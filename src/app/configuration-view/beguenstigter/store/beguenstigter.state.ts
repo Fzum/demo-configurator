@@ -16,7 +16,7 @@ const defaults: { model: { inputOne: string; inputTwo: string } } = {
 })
 export class BeguenstigterState {
   @Selector()
-  static model(state: BeguenstigterStateModel) {
+  static model(state: BeguenstigterStateModel): BeguenstigterConfig {
     return state.model;
   }
 

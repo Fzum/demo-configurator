@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractConfiguration } from '../abstract-configuration';
 import { FormBuilder } from '@angular/forms';
 import { BeguenstigterState } from './store/beguenstigter.state';
 import { Select } from '@ngxs/store';

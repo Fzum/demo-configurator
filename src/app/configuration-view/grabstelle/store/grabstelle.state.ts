@@ -4,6 +4,7 @@ import {
   ResetVerabschiedungsfeier,
   ResetGrabstelle,
 } from '../../shared/vorsorge-reset-actions';
+import { Observable } from 'rxjs';
 
 export interface GrabstelleStateModel {
   model: GrabstellenConfig;
@@ -19,7 +20,7 @@ const defaults: { model: { inputOne: string; inputTwo: string } } = {
 })
 export class GrabstelleState {
   @Selector()
-  static model(state: GrabstelleStateModel) {
+  static model(state: GrabstelleStateModel): GrabstellenConfig {
     return state.model;
   }
 

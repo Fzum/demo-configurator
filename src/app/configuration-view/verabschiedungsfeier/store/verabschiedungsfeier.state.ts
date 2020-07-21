@@ -19,7 +19,9 @@ const defaults: { model: { inputOne: string; inputTwo: string } } = {
 })
 export class VerabschiedungsfeierState {
   @Selector()
-  static model(state: VerabschiedungsfeierStateModel) {
+  static model(
+    state: VerabschiedungsfeierStateModel
+  ): VerabschiedungsfeierConfig {
     return state.model;
   }
 

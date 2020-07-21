@@ -15,7 +15,7 @@ const defaults: { model: { inputOne: string; inputTwo: string } } = {
 })
 export class BestattungsartState {
   @Selector()
-  static model(state: BestattungsartStateModel) {
+  static model(state: BestattungsartStateModel): BestattungsArtConfig {
     return state.model;
   }
 }

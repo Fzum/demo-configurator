@@ -19,7 +19,7 @@ const defaults: { model: { inputOne: string; inputTwo: string } } = {
 })
 export class PaketauswahlState {
   @Selector()
-  static model(state: PaketauswahlStateModel) {
+  static model(state: PaketauswahlStateModel): PaketauswahlConfig {
     return state.model;
   }
 

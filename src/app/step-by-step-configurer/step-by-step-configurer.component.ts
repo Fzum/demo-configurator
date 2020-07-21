@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ConfigurationstepMockService } from '../mock/configurationstep-mock-service.service';
 import { ConfigurationStep } from '../model/configurationstep';
 import { ConfigurationViewSwitcherComponent } from '../configuration-view-switcher/configuration-view-switcher.component';
+import { ConfigurationStepType } from '../model/configurationstep-type';
 
 @Component({
   selector: 'app-step-by-step-configurer',
@@ -31,7 +32,11 @@ export class StepByStepConfigurerComponent implements OnInit {
   }
 
   next(): void {
-    this.configurationViewSwitcher.handleConfigurationUpdates();
+    if (
+      this.activeConfigurationStep.type !== ConfigurationStepType.BEGUENSTIGTER
+    ) {
+      this.configurationViewSwitcher.handleConfigurationUpdates();
+    }
 
     if (this.configurationIndex < this.configurationSteps.length - 1) {
       this.configurationIndex++;
