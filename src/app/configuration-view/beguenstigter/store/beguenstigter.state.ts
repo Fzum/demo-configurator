@@ -1,7 +1,18 @@
-import { State, Action, StateContext } from '@ngxs/store';
+import {
+  State,
+  Action,
+  StateContext,
+  Select,
+  createSelector,
+  Selector,
+} from '@ngxs/store';
 import { ChangeBeguenstigter } from './beguenstigter.actions';
-import { BeguenstigterConfig } from '../../../model/dummy-config.model';
+import {
+  BeguenstigterConfig,
+  DummyConfig,
+} from '../../../model/dummy-config.model';
 import { ResetBeguenstiger } from '../../shared/vorsorge-reset-actions';
+import { BestattungsartState } from '../../bestattungsart/store/bestattungsart.state';
 
 export interface BeguenstigterStateModel {
   model: BeguenstigterConfig;
@@ -14,6 +25,11 @@ export interface BeguenstigterStateModel {
   },
 })
 export class BeguenstigterState {
+  @Selector()
+  static model(state: BeguenstigterStateModel) {
+    return state.model;
+  }
+
   @Action(ChangeBeguenstigter)
   public changeBeguenstigter(
     ctx: StateContext<BeguenstigterStateModel>,

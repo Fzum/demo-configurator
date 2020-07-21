@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ChangeBeguenstigter } from 'src/app/configuration-view/beguenstigter/store/beguenstigter.actions';
 import { AbstractConfiguration } from '../abstract-configuration';
 import { FormBuilder } from '@angular/forms';
+import { BeguenstigterState } from './store/beguenstigter.state';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-beguenstigter',
@@ -14,6 +17,8 @@ export class BeguenstigterComponent
   constructor(private fb: FormBuilder) {
     super();
   }
+
+  @Select(BeguenstigterState.model) formModel: Observable<any>;
 
   form = this.fb.group({
     inputOne: this.fb.control(''),
