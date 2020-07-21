@@ -18,6 +18,7 @@ export class GrabstelleComponent extends AbstractConfiguration<ChangeGrabstelle>
   }
 
   @Select(GrabstelleState.model) formModel: Observable<any>;
+  @Select(GrabstelleState) wholeForm: Observable<any>;
 
   form = this.fb.group({
     inputOne: this.fb.control(''),

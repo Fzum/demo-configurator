@@ -19,6 +19,7 @@ export class BestattungsartComponent
   }
 
   @Select(BestattungsartState.model) formModel: Observable<any>;
+  @Select(BestattungsartState) wholeForm: Observable<any>;
 
   form = this.fb.group({
     inputOne: this.fb.control(''),

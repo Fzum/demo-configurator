@@ -19,6 +19,7 @@ export class BeguenstigterComponent
   }
 
   @Select(BeguenstigterState.model) formModel: Observable<any>;
+  @Select(BeguenstigterState) wholeForm: Observable<any>;
 
   form = this.fb.group({
     inputOne: this.fb.control(''),

@@ -19,6 +19,7 @@ export class VerabschiedungsfeierComponent
   }
 
   @Select(VerabschiedungsfeierState.model) formModel: Observable<any>;
+  @Select(VerabschiedungsfeierState) wholeForm: Observable<any>;
 
   form = this.fb.group({
     inputOne: this.fb.control(''),

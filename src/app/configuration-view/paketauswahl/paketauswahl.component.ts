@@ -19,6 +19,7 @@ export class PaketauswahlComponent
   }
 
   @Select(PaketauswahlState.model) formModel: Observable<any>;
+  @Select(PaketauswahlState) wholeForm: Observable<any>;
 
   form = this.fb.group({
     inputOne: this.fb.control(''),

@@ -6,4 +6,7 @@
   <input fxFlex formControlName="inputOne" type="text" />
   <input fxFlex formControlName="inputTwo" type="text" />
 </form>
-{{ formModel | async | json }}
+<hr />
+Model of the form (to be saved in DB): {{ formModel | async | json }}
+<hr />
+Whole form: {{ wholeForm | async | json }}
