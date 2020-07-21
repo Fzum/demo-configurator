@@ -1,22 +1,18 @@
-import {
-  State,
-  Action,
-  Selector,
-} from '@ngxs/store';
-import {
-  BeguenstigterConfig,
-} from '../../../model/dummy-config.model';
+import { State, Action, Selector, StateContext } from '@ngxs/store';
+import { BeguenstigterConfig } from '../../../model/dummy-config.model';
 import { ResetBeguenstiger } from '../../shared/vorsorge-reset-actions';
 
 export interface BeguenstigterStateModel {
   model: BeguenstigterConfig;
 }
 
+const defaults: { model: { inputOne: string; inputTwo: string } } = {
+  model: { inputOne: '', inputTwo: '' },
+};
+
 @State<BeguenstigterStateModel>({
   name: 'beguenstigter',
-  defaults: {
-    model: { inputOne: '', inputTwo: '' },
-  },
+  defaults,
 })
 export class BeguenstigterState {
   @Selector()
@@ -25,7 +21,7 @@ export class BeguenstigterState {
   }
 
   @Action(ResetBeguenstiger)
-  public resetBeguenstiger() {
-    console.log('nothing to reset');
+  public resetBeguenstiger(ctx: StateContext<BeguenstigterStateModel>) {
+    ctx.setState(defaults);
   }
 }

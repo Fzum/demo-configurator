@@ -5,9 +5,13 @@ export interface BestattungsartStateModel {
   model: BestattungsArtConfig;
 }
 
+const defaults: { model: { inputOne: string; inputTwo: string } } = {
+  model: { inputOne: '', inputTwo: '' },
+};
+
 @State<BestattungsartStateModel>({
   name: 'bestattungsart',
-  defaults: { model: { inputOne: '', inputTwo: '' } },
+  defaults,
 })
 export class BestattungsartState {
   @Selector()

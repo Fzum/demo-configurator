@@ -27,7 +27,7 @@ export class ConfigurationViewSwitcherComponent implements OnInit {
 
     activeConfigurationComponent
       .getForm()
-      .pipe(first(), tap(console.log))
+      .pipe(first())
       .subscribe((form: { dirty: any }) => {
         if (form.dirty) {
           this.store.dispatch(activeConfigurationComponent.getResetAction());

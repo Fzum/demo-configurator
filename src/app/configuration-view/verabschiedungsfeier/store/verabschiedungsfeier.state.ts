@@ -9,9 +9,13 @@ export interface VerabschiedungsfeierStateModel {
   model: VerabschiedungsfeierConfig;
 }
 
+const defaults: { model: { inputOne: string; inputTwo: string } } = {
+  model: { inputOne: '', inputTwo: '' },
+};
+
 @State<VerabschiedungsfeierStateModel>({
   name: 'verabschiedungsfeier',
-  defaults: { model: { inputOne: '', inputTwo: '' } },
+  defaults,
 })
 export class VerabschiedungsfeierState {
   @Selector()
@@ -23,7 +27,7 @@ export class VerabschiedungsfeierState {
   public resetVarabschiedungsfeier(
     ctx: StateContext<VerabschiedungsfeierStateModel>
   ) {
-    ctx.setState({ model: undefined });
+    ctx.setState(defaults);
     ctx.dispatch(new ResetPaketauswahl());
   }
 }

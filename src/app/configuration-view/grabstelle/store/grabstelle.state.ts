@@ -9,9 +9,13 @@ export interface GrabstelleStateModel {
   model: GrabstellenConfig;
 }
 
+const defaults: { model: { inputOne: string; inputTwo: string } } = {
+  model: { inputOne: '', inputTwo: '' },
+};
+
 @State<GrabstelleStateModel>({
   name: 'grabstelle',
-  defaults: { model: { inputOne: '', inputTwo: '' } },
+  defaults,
 })
 export class GrabstelleState {
   @Selector()
@@ -21,7 +25,7 @@ export class GrabstelleState {
 
   @Action(ResetGrabstelle)
   public resetGrabstelle(ctx: StateContext<GrabstelleStateModel>) {
-    ctx.setState({ model: undefined });
+    ctx.setState(defaults);
     ctx.dispatch(new ResetVerabschiedungsfeier());
   }
 }

@@ -9,9 +9,13 @@ export interface PaketauswahlStateModel {
   model: PaketauswahlConfig;
 }
 
+const defaults: { model: { inputOne: string; inputTwo: string } } = {
+  model: { inputOne: '', inputTwo: '' },
+};
+
 @State<PaketauswahlStateModel>({
   name: 'paketauswahl',
-  defaults: { model: { inputOne: '', inputTwo: '' } },
+  defaults,
 })
 export class PaketauswahlState {
   @Selector()
@@ -21,7 +25,7 @@ export class PaketauswahlState {
 
   @Action(ResetPaketauswahl)
   public resetPaketauswahl(ctx: StateContext<PaketauswahlStateModel>) {
-    ctx.setState({ model: undefined });
+    ctx.setState(defaults);
     ctx.dispatch(new ResetBeguenstiger());
   }
 }
