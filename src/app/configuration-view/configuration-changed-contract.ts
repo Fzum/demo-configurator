@@ -1,5 +1,5 @@
 export interface ConfigruationChangedContract<T> {
-  getAction(): T;
+  getResetAction(): T;
   getForm(): any;
   getResetPath(): string;
 }

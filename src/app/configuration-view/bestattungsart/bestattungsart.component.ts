@@ -5,8 +5,6 @@ import { Select, Store } from '@ngxs/store';
 import { BestattungsartState } from './store/bestattungsart.state';
 import { Observable } from 'rxjs';
 import { ResetGrabstelle } from '../shared/vorsorge-reset-actions';
-import { SetFormPristine } from '@ngxs/form-plugin';
-import { first, last } from 'rxjs/operators';
 
 @Component({
   selector: 'app-bestattungsart',
@@ -15,12 +13,12 @@ import { first, last } from 'rxjs/operators';
 })
 export class BestattungsartComponent
   extends AbstractConfiguration<ResetGrabstelle>
-  implements OnInit, OnDestroy {
-  constructor(private fb: FormBuilder, private store: Store) {
+  implements OnInit {
+  constructor(private fb: FormBuilder, public store: Store) {
     super(
       new ResetGrabstelle(),
       'bestattungsart',
-      store.select((state) => state.bestattungsart).pipe(last())
+      store.select((state) => state.bestattungsart)
     );
   }
 
@@ -33,11 +31,4 @@ export class BestattungsartComponent
   });
 
   ngOnInit(): void {}
-
-  ngOnDestroy(): void {
-    this.wholeForm.pipe(first()).subscribe((form) => {
-      if (form.dirty) this.store.dispatch(new ResetGrabstelle());
-    });
-    this.store.dispatch(new SetFormPristine('bestattungsart'));
-  }
 }

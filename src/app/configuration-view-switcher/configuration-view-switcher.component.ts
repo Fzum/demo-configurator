@@ -3,7 +3,7 @@ import { ConfigurationStepType } from '../model/configurationstep-type';
 import { Store } from '@ngxs/store';
 import { ConfigruationChangedContract } from '../configuration-view/configuration-changed-contract';
 import { ConfigurationChangeAction } from '../configuration-view/shared/vorsorge-configuration.actions';
-import { first } from 'rxjs/operators';
+import { first, tap } from 'rxjs/operators';
 import { SetFormPristine } from '@ngxs/form-plugin';
 
 @Component({
@@ -27,13 +27,14 @@ export class ConfigurationViewSwitcherComponent implements OnInit {
 
     activeConfigurationComponent
       .getForm()
-      .pipe(first())
-      .subscribe((form: { dirty: any; }) => {
-        if (form.dirty)
-          this.store.dispatch(activeConfigurationComponent.getAction());
+      .pipe(first(), tap(console.log))
+      .subscribe((form: { dirty: any }) => {
+        if (form.dirty) {
+          this.store.dispatch(activeConfigurationComponent.getResetAction());
+          this.store.dispatch(
+            new SetFormPristine(activeConfigurationComponent.getResetPath())
+          );
+        }
       });
-    this.store.dispatch(
-      new SetFormPristine(activeConfigurationComponent.getResetPath())
-    );
   }
 }
