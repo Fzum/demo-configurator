@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ChangeBeguenstigter } from 'src/app/configuration-view/beguenstigter/store/beguenstigter.actions';
 import { AbstractConfiguration } from '../abstract-configuration';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import {
   BeguenstigterState,
   BeguenstigterStateModel,
