@@ -58,13 +58,8 @@ export class StoreState {
     const state: StoreStateModel = ctx.getState();
     const currentRouteIndex = state.currentRouteIndex;
     const activatedRouteIndices = state.activatedRouteIndices;
+    const routesBeforeResetConfigs = activatedRouteIndices.splice(0, currentRouteIndex + 1);
 
-    console.log('currentRouteIndex');
-    console.log(currentRouteIndex);
-
-    console.log('activatedRouteIndices');
-    console.log(activatedRouteIndices);
-
-    ctx.patchState({activatedRouteIndices: activatedRouteIndices.splice(currentRouteIndex + 1)});
+    ctx.patchState({activatedRouteIndices: routesBeforeResetConfigs});
   }
 }
