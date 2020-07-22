@@ -7,14 +7,12 @@ export class StoreAction {
 
 export class NavigateForwards {
   public static readonly type = '[Store] Navigate Forward';
-
-  constructor() {
-  }
 }
 
 export class NavigateBackwards {
   public static readonly type = '[Store] Navigate Backward';
+}
 
-  constructor() {
-  }
+export class DeleteActiveIndices {
+  public static readonly type = '[Store] Delete All Indices After Current';
 }

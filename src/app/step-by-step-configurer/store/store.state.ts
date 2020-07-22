@@ -1,5 +1,5 @@
 import {Action, Selector, State, StateContext} from '@ngxs/store';
-import {NavigateBackwards, NavigateForwards, StoreAction} from './store.actions';
+import {DeleteActiveIndices, NavigateBackwards, NavigateForwards, StoreAction} from './store.actions';
 
 export interface StoreStateModel {
   currentRouteIndex: number;
@@ -34,14 +34,37 @@ export class StoreState {
   @Action(NavigateForwards)
   public navigateForward(ctx: StateContext<StoreStateModel>): void {
     const currentRouteIndex = ctx.getState().currentRouteIndex;
-    ctx.patchState({
-      activatedRouteIndices: [...ctx.getState().activatedRouteIndices, currentRouteIndex],
-      currentRouteIndex: currentRouteIndex + 1
-    });
+    const activatedRouteIndices = ctx.getState().activatedRouteIndices;
+
+    if (activatedRouteIndices.includes(currentRouteIndex)) {
+      ctx.patchState({
+        currentRouteIndex: currentRouteIndex + 1
+      });
+    } else {
+      ctx.patchState({
+        activatedRouteIndices: [...activatedRouteIndices, currentRouteIndex],
+        currentRouteIndex: currentRouteIndex + 1
+      });
+    }
   }
 
   @Action(NavigateBackwards)
   public navigateBackward(ctx: StateContext<StoreStateModel>): void {
     ctx.patchState({currentRouteIndex: ctx.getState().currentRouteIndex - 1});
+  }
+
+  @Action(DeleteActiveIndices)
+  public deleteActiveIndices(ctx: StateContext<StoreStateModel>): void {
+    const state: StoreStateModel = ctx.getState();
+    const currentRouteIndex = state.currentRouteIndex;
+    const activatedRouteIndices = state.activatedRouteIndices;
+
+    console.log('currentRouteIndex');
+    console.log(currentRouteIndex);
+
+    console.log('activatedRouteIndices');
+    console.log(activatedRouteIndices);
+
+    ctx.patchState({activatedRouteIndices: activatedRouteIndices.splice(currentRouteIndex + 1)});
   }
 }
