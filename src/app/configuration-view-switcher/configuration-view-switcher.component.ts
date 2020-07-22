@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {ConfigurationStepType} from '../model/configurationstep-type';
+import {ConfigurationType} from '../model/configuration-type';
 import {Store} from '@ngxs/store';
 import {ConfigruationChangedContract} from '../configuration-view/configuration-changed-contract';
 import {SetFormPristine} from '@ngxs/form-plugin';
@@ -13,7 +13,7 @@ export class ConfigurationViewSwitcherComponent implements OnInit {
   constructor(private store: Store) {
   }
 
-  @Input() configurationType: ConfigurationStepType;
+  @Input() configurationType: ConfigurationType;
 
   @ViewChild('abstractConfiguration')
   abstractConfigurations: ConfigruationChangedContract<any>; // typesafety unknown extends XY

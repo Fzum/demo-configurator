@@ -1,4 +1,4 @@
-export enum ConfigurationStepType {
+export enum ConfigurationType {
   BESTATTUNGSART = 'Bestattungsart',
   GRABSTELLE = 'Grabstelle',
   VERABSCHIEDUNGSFEIER = 'Verabschiedungsfeier',

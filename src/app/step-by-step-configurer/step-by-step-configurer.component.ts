@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ConfigurationstepMockService} from '../mock/configurationstep-mock-service.service';
 import {ConfigurationStep} from '../model/configurationstep';
 import {ConfigurationViewSwitcherComponent} from '../configuration-view-switcher/configuration-view-switcher.component';
-import {ConfigurationStepType} from '../model/configurationstep-type';
+import {ConfigurationType} from '../model/configuration-type';
 
 @Component({
     selector: 'app-step-by-step-configurer',
@@ -13,47 +13,39 @@ export class StepByStepConfigurerComponent implements OnInit {
     @ViewChild(ConfigurationViewSwitcherComponent)
     configurationViewSwitcher: ConfigurationViewSwitcherComponent;
 
-    configurationIndex: number;
-    configurationSteps: ConfigurationStep[];
-    activeConfigurationStep: ConfigurationStep;
+    index: number;
+    configs: ConfigurationStep[];
+    activeConfig: ConfigurationStep;
 
     constructor(service: ConfigurationstepMockService) {
-        this.configurationIndex = 0;
-        this.configurationSteps = service.getConfigurationSteps();
+        this.index = 0;
+        this.configs = service.getConfigurationSteps();
         this.setActiveConfiguration();
     }
 
     ngOnInit(): void {
     }
 
-    private setActiveConfiguration(): void {
-        this.activeConfigurationStep = this.configurationSteps[
-            this.configurationIndex
-            ];
-    }
-
-    setIndexAndSwitch(index: number): void {
-        this.configurationIndex = index;
-        this.setActiveConfiguration();
+    setActiveConfiguration(index?: number): void {
+        this.activeConfig = this.configs[index ? index : this.index];
     }
 
     next(): void {
-        if (
-            this.activeConfigurationStep.type !== ConfigurationStepType.BEGUENSTIGTER
-        ) {
+        const isNotLastConfig = this.activeConfig.type !== ConfigurationType.BEGUENSTIGTER;
+        if (isNotLastConfig) {
             this.configurationViewSwitcher.handleConfigurationUpdates();
         }
 
-        if (this.configurationIndex < this.configurationSteps.length - 1) {
-            this.configurationIndex++;
+        if (this.index < this.configs.length - 1) {
+            this.index++;
         }
 
         this.setActiveConfiguration();
     }
 
     previous(): void {
-        if (this.configurationIndex > 0) {
-            this.configurationIndex--;
+        if (this.index > 0) {
+            this.index--;
         }
 
         this.setActiveConfiguration();

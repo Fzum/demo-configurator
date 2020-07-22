@@ -1,6 +1,6 @@
-import { ConfigurationStepType } from './configurationstep-type';
+import {ConfigurationType} from './configuration-type';
 
 export interface ConfigurationStep {
-  type: ConfigurationStepType;
+  type: ConfigurationType;
   header: string;
 }

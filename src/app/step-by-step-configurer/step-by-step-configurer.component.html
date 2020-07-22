@@ -2,17 +2,17 @@
   <div
     fxLayoutAlign="center"
     fxFlex
-    *ngFor="let s of configurationSteps; let i = index"
-    [class.is-active]="s === activeConfigurationStep"
+    *ngFor="let s of configs; let i = index"
+    [class.is-active]="s === activeConfig"
   >
-    <button (click)="setIndexAndSwitch(i)">{{ s.type }}</button>
+    <button (click)="setActiveConfiguration(i)">{{ s.type }}</button>
   </div>
 </div>
 <div fxLayoutAlign="space-between">
   <button (click)="previous()">Zurück</button>
-  <h1>{{ activeConfigurationStep.header }}</h1>
+  <h1>{{ activeConfig.header }}</h1>
   <button (click)="next()">Weiter</button>
 </div>
 <app-configuration-view-switcher
-  [configurationType]="activeConfigurationStep.type"
+  [configurationType]="activeConfig.type"
 ></app-configuration-view-switcher>

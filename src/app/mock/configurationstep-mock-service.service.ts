@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { ConfigurationStep } from '../model/configurationstep';
-import { ConfigurationStepType } from '../model/configurationstep-type';
+import {Injectable} from '@angular/core';
+import {ConfigurationStep} from '../model/configurationstep';
+import {ConfigurationType} from '../model/configuration-type';
 
 @Injectable({
   providedIn: 'root',
@@ -11,27 +11,27 @@ export class ConfigurationstepMockService {
   public getConfigurationSteps(): ConfigurationStep[] {
     return [
       {
-        type: ConfigurationStepType.BESTATTUNGSART,
+        type: ConfigurationType.BESTATTUNGSART,
         header: 'Welche Bestattungsart willst du?',
       },
       {
-        type: ConfigurationStepType.GRABSTELLE,
+        type: ConfigurationType.GRABSTELLE,
         header: 'Welche Grabstelle willst du?',
       },
       {
-        type: ConfigurationStepType.VERABSCHIEDUNGSFEIER,
+        type: ConfigurationType.VERABSCHIEDUNGSFEIER,
         header: 'Willst du eine Verabschiedung?',
       },
       {
-        type: ConfigurationStepType.PAKETAUSWAHL,
+        type: ConfigurationType.PAKETAUSWAHL,
         header: 'Welches Paket willst du?',
       },
       {
-        type: ConfigurationStepType.BEGUENSTIGTER,
+        type: ConfigurationType.BEGUENSTIGTER,
         header: 'Wer ist der Begünstigte?',
       },
       {
-        type: ConfigurationStepType.ZUSAMMENFASSUNG,
+        type: ConfigurationType.ZUSAMMENFASSUNG,
         header: 'Hier ist die Zusammenfassung!',
       },
     ];
