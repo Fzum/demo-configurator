@@ -29,10 +29,11 @@ export class ConfigurationViewSwitcherComponent implements OnInit {
       .getForm()
       .subscribe((form: { dirty: any }) => {
         if (form.dirty) {
-          this.store.dispatch(activeConfigurationComponent.getResetAction());
-          this.store.dispatch(
-            new SetFormPristine(activeConfigurationComponent.getResetPath())
-          );
+          const resetAction = activeConfigurationComponent.getResetAction();
+          const setFormAction = new SetFormPristine(activeConfigurationComponent.getResetPath());
+
+          this.store.dispatch(resetAction);
+          this.store.dispatch(setFormAction);
         }
       });
   }
