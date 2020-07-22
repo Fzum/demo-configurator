@@ -5,7 +5,7 @@
     *ngFor="let s of configs; let i = index"
     [class.is-active]="s === activeConfig"
   >
-    <button (click)="setActiveConfiguration(i)">{{ s.type }}</button>
+    <button [disabled]="isNotActivated(i)" (click)="setActiveConfiguration(i)">{{ s.type }}</button>
   </div>
 </div>
 <div fxLayoutAlign="space-between">

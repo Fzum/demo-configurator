@@ -34,6 +34,9 @@ export class ConfigurationViewSwitcherComponent implements OnInit {
 
           this.store.dispatch(resetAction);
           this.store.dispatch(setFormAction);
+
+          // const payload = this.store.selectSnapshot(StoreState)
+          // this.store.dispatch(new DeleteActiveIndices())
         }
       });
   }

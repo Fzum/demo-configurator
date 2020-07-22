@@ -3,6 +3,11 @@ import {ConfigurationstepMockService} from '../mock/configurationstep-mock-servi
 import {ConfigurationStep} from '../model/configurationstep';
 import {ConfigurationViewSwitcherComponent} from '../configuration-view-switcher/configuration-view-switcher.component';
 import {ConfigurationType} from '../model/configuration-type';
+import {Select, Store} from '@ngxs/store';
+import {StoreState, StoreStateModel} from './store/store.state';
+import {Observable} from 'rxjs';
+import {NavigateBackwards, NavigateForwards} from './store/store.actions';
+import {tap} from 'rxjs/operators';
 
 @Component({
     selector: 'app-step-by-step-configurer',
@@ -13,31 +18,32 @@ export class StepByStepConfigurerComponent implements OnInit {
     @ViewChild(ConfigurationViewSwitcherComponent)
     configurationViewSwitcher: ConfigurationViewSwitcherComponent;
 
+    @Select(StoreState.activatedRouteIndices) activatedRouteIndices$: Observable<number[]>;
+    @Select(StoreState.currentRouteIndex) currentRouteIndex: Observable<number>;
+
     index = 0;
     configs = this.service.getConfigurationSteps();
     activeConfig: ConfigurationStep;
 
-    constructor(private service: ConfigurationstepMockService) {
-        this.setActiveConfiguration();
+    constructor(private service: ConfigurationstepMockService,
+                private store: Store) {
     }
 
     ngOnInit(): void {
-    }
-
-    setActiveConfiguration(index?: number): void {
-        this.activeConfig = this.configs[index ? index : this.index];
+        this.setActiveConfiguration();
+        this.currentRouteIndex
+            .pipe(tap(console.log))
+            .subscribe(c => this.index = c);
     }
 
     next(): void {
         this.handleStateUpdatesIfNotLastConfig();
-        this.incrementIndex();
+        this.store.dispatch(new NavigateForwards());
         this.setActiveConfiguration();
     }
 
-    private incrementIndex(): void {
-        if (this.index < this.configs.length - 1) {
-            this.index++;
-        }
+    setActiveConfiguration(index?: number): void {
+        this.activeConfig = this.configs[index ? index : this.index];
     }
 
     private handleStateUpdatesIfNotLastConfig(): void {
@@ -48,13 +54,12 @@ export class StepByStepConfigurerComponent implements OnInit {
     }
 
     previous(): void {
-        this.decrementIndex();
+        this.store.dispatch(new NavigateBackwards());
         this.setActiveConfiguration();
     }
 
-    private decrementIndex(): void {
-        if (this.index > 0) {
-            this.index--;
-        }
+    isNotActivated(i: number): boolean {
+        const selectSnapshot: StoreStateModel = this.store.selectSnapshot(StoreState);
+        return !selectSnapshot.activatedRouteIndices.includes(i);
     }
 }
