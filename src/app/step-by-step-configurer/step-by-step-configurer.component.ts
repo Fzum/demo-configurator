@@ -13,13 +13,11 @@ export class StepByStepConfigurerComponent implements OnInit {
     @ViewChild(ConfigurationViewSwitcherComponent)
     configurationViewSwitcher: ConfigurationViewSwitcherComponent;
 
-    index: number;
-    configs: ConfigurationStep[];
+    index = 0;
+    configs = this.service.getConfigurationSteps();
     activeConfig: ConfigurationStep;
 
-    constructor(service: ConfigurationstepMockService) {
-        this.index = 0;
-        this.configs = service.getConfigurationSteps();
+    constructor(private service: ConfigurationstepMockService) {
         this.setActiveConfiguration();
     }
 
