@@ -20,7 +20,6 @@ export class StepByStepConfigurerComponent implements OnInit {
     @Select(StoreState.activatedRouteIndices) activatedRouteIndices$: Observable<number[]>;
     @Select(StoreState.currentRouteIndex) currentRouteIndex: Observable<number>;
 
-    index = 0;
     configs = this.service.getConfigurationSteps();
     activeConfig: ConfigurationStep;
 
@@ -29,18 +28,16 @@ export class StepByStepConfigurerComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.setActiveConfiguration();
-        this.currentRouteIndex.subscribe(c => this.index = c);
+        this.currentRouteIndex.subscribe(c => this.activeConfig = this.configs[c]);
     }
 
     next(): void {
         this.handleStateUpdatesIfNotLastConfig();
         this.store.dispatch(new NavigateForwards());
-        this.setActiveConfiguration();
     }
 
-    setActiveConfiguration(index?: number): void {
-        this.activeConfig = this.configs[index ? index : this.index];
+    setActiveConfiguration(index: number): void {
+        this.activeConfig = this.configs[index];
     }
 
     private handleStateUpdatesIfNotLastConfig(): void {
@@ -52,7 +49,6 @@ export class StepByStepConfigurerComponent implements OnInit {
 
     previous(): void {
         this.store.dispatch(new NavigateBackwards());
-        this.setActiveConfiguration();
     }
 
     isNotActivated(i: number): boolean {
