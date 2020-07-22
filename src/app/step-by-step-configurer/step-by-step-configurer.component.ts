@@ -7,7 +7,6 @@ import {Select, Store} from '@ngxs/store';
 import {StoreState, StoreStateModel} from './store/store.state';
 import {Observable} from 'rxjs';
 import {NavigateBackwards, NavigateForwards} from './store/store.actions';
-import {tap} from 'rxjs/operators';
 
 @Component({
     selector: 'app-step-by-step-configurer',
@@ -31,9 +30,7 @@ export class StepByStepConfigurerComponent implements OnInit {
 
     ngOnInit(): void {
         this.setActiveConfiguration();
-        this.currentRouteIndex
-            .pipe(tap(console.log))
-            .subscribe(c => this.index = c);
+        this.currentRouteIndex.subscribe(c => this.index = c);
     }
 
     next(): void {
