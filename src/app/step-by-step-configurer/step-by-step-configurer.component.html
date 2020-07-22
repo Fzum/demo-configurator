@@ -2,10 +2,10 @@
   <div
     fxLayoutAlign="center"
     fxFlex
-    *ngFor="let s of configurationSteps"
+    *ngFor="let s of configurationSteps; let i = index"
     [class.is-active]="s === activeConfigurationStep"
   >
-    <button [disabled]="s !== activeConfigurationStep">{{ s.type }}</button>
+    <button (click)="setIndexAndSwitch(i)">{{ s.type }}</button>
   </div>
 </div>
 <div fxLayoutAlign="space-between">

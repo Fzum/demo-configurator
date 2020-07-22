@@ -1,55 +1,61 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ConfigurationstepMockService } from '../mock/configurationstep-mock-service.service';
-import { ConfigurationStep } from '../model/configurationstep';
-import { ConfigurationViewSwitcherComponent } from '../configuration-view-switcher/configuration-view-switcher.component';
-import { ConfigurationStepType } from '../model/configurationstep-type';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {ConfigurationstepMockService} from '../mock/configurationstep-mock-service.service';
+import {ConfigurationStep} from '../model/configurationstep';
+import {ConfigurationViewSwitcherComponent} from '../configuration-view-switcher/configuration-view-switcher.component';
+import {ConfigurationStepType} from '../model/configurationstep-type';
 
 @Component({
-  selector: 'app-step-by-step-configurer',
-  templateUrl: './step-by-step-configurer.component.html',
-  styleUrls: ['./step-by-step-configurer.component.scss'],
+    selector: 'app-step-by-step-configurer',
+    templateUrl: './step-by-step-configurer.component.html',
+    styleUrls: ['./step-by-step-configurer.component.scss'],
 })
 export class StepByStepConfigurerComponent implements OnInit {
-  @ViewChild(ConfigurationViewSwitcherComponent)
-  configurationViewSwitcher: ConfigurationViewSwitcherComponent;
+    @ViewChild(ConfigurationViewSwitcherComponent)
+    configurationViewSwitcher: ConfigurationViewSwitcherComponent;
 
-  configurationIndex: number;
-  configurationSteps: ConfigurationStep[];
-  activeConfigurationStep: ConfigurationStep;
+    configurationIndex: number;
+    configurationSteps: ConfigurationStep[];
+    activeConfigurationStep: ConfigurationStep;
 
-  constructor(service: ConfigurationstepMockService) {
-    this.configurationIndex = 0;
-    this.configurationSteps = service.getConfigurationSteps();
-    this.setActiveConfiguration();
-  }
-
-  ngOnInit(): void {}
-
-  private setActiveConfiguration(): void {
-    this.activeConfigurationStep = this.configurationSteps[
-      this.configurationIndex
-    ];
-  }
-
-  next(): void {
-    if (
-      this.activeConfigurationStep.type !== ConfigurationStepType.BEGUENSTIGTER
-    ) {
-      this.configurationViewSwitcher.handleConfigurationUpdates();
+    constructor(service: ConfigurationstepMockService) {
+        this.configurationIndex = 0;
+        this.configurationSteps = service.getConfigurationSteps();
+        this.setActiveConfiguration();
     }
 
-    if (this.configurationIndex < this.configurationSteps.length - 1) {
-      this.configurationIndex++;
+    ngOnInit(): void {
     }
 
-    this.setActiveConfiguration();
-  }
-
-  previous(): void {
-    if (this.configurationIndex > 0) {
-      this.configurationIndex--;
+    private setActiveConfiguration(): void {
+        this.activeConfigurationStep = this.configurationSteps[
+            this.configurationIndex
+            ];
     }
 
-    this.setActiveConfiguration();
-  }
+    setIndexAndSwitch(index: number): void {
+        this.configurationIndex = index;
+        this.setActiveConfiguration();
+    }
+
+    next(): void {
+        if (
+            this.activeConfigurationStep.type !== ConfigurationStepType.BEGUENSTIGTER
+        ) {
+            this.configurationViewSwitcher.handleConfigurationUpdates();
+        }
+
+        if (this.configurationIndex < this.configurationSteps.length - 1) {
+            this.configurationIndex++;
+        }
+
+        this.setActiveConfiguration();
+    }
+
+    previous(): void {
+        if (this.configurationIndex > 0) {
+            this.configurationIndex--;
+        }
+
+        this.setActiveConfiguration();
+    }
 }
