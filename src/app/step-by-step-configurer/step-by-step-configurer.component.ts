@@ -31,23 +31,32 @@ export class StepByStepConfigurerComponent implements OnInit {
     }
 
     next(): void {
+        this.handleStateUpdatesIfNotLastConfig();
+        this.incrementIndex();
+        this.setActiveConfiguration();
+    }
+
+    private incrementIndex(): void {
+        if (this.index < this.configs.length - 1) {
+            this.index++;
+        }
+    }
+
+    private handleStateUpdatesIfNotLastConfig(): void {
         const isNotLastConfig = this.activeConfig.type !== ConfigurationType.BEGUENSTIGTER;
         if (isNotLastConfig) {
             this.configurationViewSwitcher.handleConfigurationUpdates();
         }
-
-        if (this.index < this.configs.length - 1) {
-            this.index++;
-        }
-
-        this.setActiveConfiguration();
     }
 
     previous(): void {
+        this.decrementIndex();
+        this.setActiveConfiguration();
+    }
+
+    private decrementIndex(): void {
         if (this.index > 0) {
             this.index--;
         }
-
-        this.setActiveConfiguration();
     }
 }
