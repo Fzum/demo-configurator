@@ -51,6 +51,12 @@ export class StoreState {
     return state.activeConfig;
   }
 
+  @Selector()
+  public static isRouteNotActivated(ctx: StateContext<StoreStateModel>): boolean {
+    const state: StoreStateModel = ctx.getState();
+    return !state.activatedRouteIndices.includes(state.currentRouteIndex);
+  }
+
   @Action(LoadConfigurations)
   public loadConfigurations(ctx: StateContext<StoreStateModel>) {
     const configurations: ConfigurationStep[] = this.service.getConfigurationSteps();

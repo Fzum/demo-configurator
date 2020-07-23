@@ -26,6 +26,7 @@ import {ZusammenfassungState} from './configuration-view/zusammenfassung/store/z
 import {NgxsFormPluginModule} from '@ngxs/form-plugin';
 import {ReactiveFormsModule} from '@angular/forms';
 import {StoreState} from './step-by-step-configurer/store/store.state';
+import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
 
 const configurationStates = [
   BeguenstigterState,
@@ -58,6 +59,7 @@ const configurationStates = [
       NgxsModule.forRoot(configurationStates),
       NgxsReduxDevtoolsPluginModule.forRoot(),
       NgxsFormPluginModule.forRoot(),
+      NgxsDispatchPluginModule
     ],
   ],
   providers: [],

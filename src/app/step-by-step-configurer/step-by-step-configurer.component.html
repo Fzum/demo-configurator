@@ -2,19 +2,19 @@
   <div
     fxLayoutAlign="center"
     fxFlex
-    *ngFor="let s of configs$ | async; let i = index"
-    [class.is-active]="s === (activeConfig$ | async)"
+    *ngFor="let s of service.configs$ | async; let i = index"
+    [class.is-active]="s === (service.activeConfig$ | async)"
   >
-    <button [disabled]="isNotActivated(i)" (click)="setActiveConfiguration(i)">
+    <button [disabled]="service.isRouteNotActivated$" (click)="service.setActiveConfiguration(i)">
       {{ s.type }}
     </button>
   </div>
 </div>
 <div fxLayoutAlign="space-between">
   <button (click)="previous()">Zurück</button>
-  <h1>{{ (activeConfig$ | async).header }}</h1>
+  <h1>{{ (service.activeConfig$ | async).header }}</h1>
   <button (click)="next()">Weiter</button>
 </div>
 <app-configuration-view-switcher
-  [configurationType]="(activeConfig$ | async).type"
+  [configurationType]="(service.activeConfig$ | async).type"
 ></app-configuration-view-switcher>
