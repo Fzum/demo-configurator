@@ -1,5 +1,5 @@
-import {ConfigruationChangedContract} from './configuration-changed-contract';
-import {Observable} from 'rxjs';
+import { ConfigruationChangedContract } from './configuration-changed-contract';
+import { Observable } from 'rxjs';
 
 export class AbstractConfiguration<T>
   implements ConfigruationChangedContract<T> {
@@ -19,7 +19,6 @@ export class AbstractConfiguration<T>
 
   getFormState(): Observable<any> {
     return this.form;
-    // .pipe(last()
   }
 
   getResetPath(): string {

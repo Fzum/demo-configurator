@@ -4,7 +4,7 @@ import { Store } from '@ngxs/store';
 import { ConfigruationChangedContract } from '../configuration-view/configuration-changed-contract';
 import { SetFormPristine } from '@ngxs/form-plugin';
 import { DeleteActiveIndices } from '../step-by-step-configurer/store/store.actions';
-import { last, first } from 'rxjs/operators';
+import { last, first, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-configuration-view-switcher',
@@ -27,6 +27,7 @@ export class ConfigurationViewSwitcherComponent implements OnInit {
 
     activeConfigurationComponent
       .getFormState()
+      .pipe(filter((f) => f !== undefined))
       .subscribe((form: { dirty: any }) => {
         if (form.dirty) {
           const resetAction = activeConfigurationComponent.getResetAction();

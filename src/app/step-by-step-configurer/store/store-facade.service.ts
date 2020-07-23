@@ -27,11 +27,6 @@ export class StoreFacadeService {
   @Select(StoreState.activeConfiguration) activeConfig$: Observable<
     ConfigurationStep
   >;
-  @Select(
-    (s: StoreStateModel) =>
-      s.activeConfig.type === ConfigurationType.BEGUENSTIGTER
-  )
-  isLastConfigurationStep$: Observable<boolean>;
 
   constructor() {
     this.loadConfigurations();
