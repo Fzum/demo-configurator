@@ -5,13 +5,9 @@ import { Observable } from 'rxjs';
 import {
   BestattungsArtConfig,
   GrabstellenConfig,
-  VerabschiedungsfeierConfig,
-  PaketauswahlConfig,
   BeguenstigterConfig,
 } from 'src/app/model/dummy-config.model';
 import { GrabstelleState } from '../grabstelle/store/grabstelle.state';
-import { VerabschiedungsfeierState } from '../verabschiedungsfeier/store/verabschiedungsfeier.state';
-import { PaketauswahlState } from '../paketauswahl/store/paketauswahl.state';
 import { BeguenstigterState } from '../beguenstigter/store/beguenstigter.state';
 
 @Component({
@@ -27,12 +23,6 @@ export class ZusammenfassungComponent implements OnInit {
 
   @Select(GrabstelleState.model)
   grabstellenModel$: Observable<GrabstellenConfig>;
-
-  @Select(VerabschiedungsfeierState.model)
-  verabschiedungsfeierModel$: Observable<VerabschiedungsfeierConfig>;
-
-  @Select(PaketauswahlState.model)
-  paketauswahlModel$: Observable<PaketauswahlConfig>;
 
   @Select(BeguenstigterState.model)
   beguenstigterMode$: Observable<BeguenstigterConfig>;

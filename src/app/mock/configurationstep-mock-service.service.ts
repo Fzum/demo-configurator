@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {ConfigurationStep} from '../model/configurationstep';
-import {ConfigurationType} from '../model/configuration-type';
+import { Injectable } from '@angular/core';
+import { ConfigurationStep } from '../model/configurationstep';
+import { ConfigurationType } from '../model/configuration-type';
 
 @Injectable({
   providedIn: 'root',
@@ -21,14 +21,6 @@ export class ConfigurationstepMockService {
       {
         type: ConfigurationType.VERABSCHIEDUNGSFEIER,
         header: 'Willst du eine Verabschiedung?',
-      },
-      {
-        type: ConfigurationType.PAKETAUSWAHL,
-        header: 'Welches Paket willst du?',
-      },
-      {
-        type: ConfigurationType.BEGUENSTIGTER,
-        header: 'Wer ist der Begünstigte?',
       },
       {
         type: ConfigurationType.ZUSAMMENFASSUNG,

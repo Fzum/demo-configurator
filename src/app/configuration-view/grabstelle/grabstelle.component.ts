@@ -1,7 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AbstractConfiguration } from '../abstract-configuration';
 import { FormBuilder } from '@angular/forms';
-import { GrabstelleState } from './store/grabstelle.state';
+import {
+  GrabstelleState,
+  MarkGrabstelleConfigurationAsDirty,
+} from './store/grabstelle.state';
 import { Observable, of } from 'rxjs';
 import { Select, Store } from '@ngxs/store';
 import { ResetVerabschiedungsfeier } from '../shared/vorsorge-reset-actions';
@@ -22,13 +25,9 @@ export class GrabstelleComponent
     );
   }
 
-  @Select(GrabstelleState.model) formModel: Observable<any>;
-  @Select(GrabstelleState) wholeForm: Observable<any>;
-
-  formGroup = this.fb.group({
-    inputOne: this.fb.control(''),
-    inputTwo: this.fb.control(''),
-  });
-
   ngOnInit(): void {}
+
+  markAsDirty() {
+    this.store.dispatch(new MarkGrabstelleConfigurationAsDirty());
+  }
 }

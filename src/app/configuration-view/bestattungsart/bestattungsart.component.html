@@ -1,12 +1,1 @@
-<form
-  fxLayoutAlign="space-between"
-  [formGroup]="formGroup"
-  ngxsForm="bestattungsart"
->
-  <input fxFlex formControlName="inputOne" type="text" />
-  <input fxFlex formControlName="inputTwo" type="text" />
-</form>
-<hr />
-Model of the form (to be saved in DB): {{ formModel | async | json }}
-<hr />
-Whole form: {{ wholeForm | async | json }}
+<button (click)="markAsDirty()"></button>

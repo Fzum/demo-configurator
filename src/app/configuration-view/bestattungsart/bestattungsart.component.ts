@@ -2,7 +2,10 @@ import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { AbstractConfiguration } from '../abstract-configuration';
 import { FormBuilder } from '@angular/forms';
 import { Select, Store } from '@ngxs/store';
-import { BestattungsartState } from './store/bestattungsart.state';
+import {
+  BestattungsartState,
+  MarkBestattungsConfigurationAsDirty,
+} from './store/bestattungsart.state';
 import { Observable, of } from 'rxjs';
 import { ResetGrabstelle } from '../shared/vorsorge-reset-actions';
 
@@ -22,13 +25,9 @@ export class BestattungsartComponent
     );
   }
 
-  @Select(BestattungsartState.model) formModel: Observable<any>;
-  @Select(BestattungsartState) wholeForm: Observable<any>;
-
-  formGroup = this.fb.group({
-    inputOne: this.fb.control(''),
-    inputTwo: this.fb.control(''),
-  });
-
   ngOnInit(): void {}
+
+  public markAsDirty() {
+    this.store.dispatch(new MarkBestattungsConfigurationAsDirty());
+  }
 }
