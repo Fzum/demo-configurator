@@ -1,58 +1,67 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {ConfigurationstepMockService} from '../mock/configurationstep-mock-service.service';
-import {ConfigurationStep} from '../model/configurationstep';
-import {ConfigurationViewSwitcherComponent} from '../configuration-view-switcher/configuration-view-switcher.component';
-import {ConfigurationType} from '../model/configuration-type';
-import {Select, Store} from '@ngxs/store';
-import {StoreState, StoreStateModel} from './store/store.state';
-import {Observable} from 'rxjs';
-import {NavigateBackwards, NavigateForwards} from './store/store.actions';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ConfigurationstepMockService } from '../mock/configurationstep-mock-service.service';
+import { ConfigurationStep } from '../model/configurationstep';
+import { ConfigurationViewSwitcherComponent } from '../configuration-view-switcher/configuration-view-switcher.component';
+import { ConfigurationType } from '../model/configuration-type';
+import { Select, Store } from '@ngxs/store';
+import { StoreState, StoreStateModel } from './store/store.state';
+import { Observable } from 'rxjs';
+import {
+  NavigateBackwards,
+  NavigateForwards,
+  SetActiveConfiguration,
+  LoadConfigurations,
+} from './store/store.actions';
 
 @Component({
-    selector: 'app-step-by-step-configurer',
-    templateUrl: './step-by-step-configurer.component.html',
-    styleUrls: ['./step-by-step-configurer.component.scss'],
+  selector: 'app-step-by-step-configurer',
+  templateUrl: './step-by-step-configurer.component.html',
+  styleUrls: ['./step-by-step-configurer.component.scss'],
 })
 export class StepByStepConfigurerComponent implements OnInit {
-    @ViewChild(ConfigurationViewSwitcherComponent)
-    configurationViewSwitcher: ConfigurationViewSwitcherComponent;
+  @ViewChild(ConfigurationViewSwitcherComponent)
+  configurationViewSwitcher: ConfigurationViewSwitcherComponent;
 
-    @Select(StoreState.activatedRouteIndices) activatedRouteIndices$: Observable<number[]>;
-    @Select(StoreState.currentRouteIndex) currentRouteIndex: Observable<number>;
+  @Select(StoreState.activatedRouteIndices) activatedRouteIndices$: Observable<
+    number[]
+  >;
+  @Select(StoreState.currentRouteIndex) currentRouteIndex$: Observable<number>;
+  @Select(StoreState.configurations) configs$: Observable<ConfigurationStep[]>;
+  @Select(StoreState.activeConfiguration) activeConfig$: Observable<
+    ConfigurationStep
+  >;
 
-    configs = this.service.getConfigurationSteps();
-    activeConfig: ConfigurationStep;
+  constructor(private store: Store) {}
 
-    constructor(private service: ConfigurationstepMockService,
-                private store: Store) {
-    }
+  ngOnInit(): void {
+    this.store.dispatch(new LoadConfigurations());
+  }
 
-    ngOnInit(): void {
-        this.currentRouteIndex.subscribe(c => this.activeConfig = this.configs[c]);
-    }
+  next(): void {
+    this.handleStateUpdatesIfNotLastConfig();
+    this.store.dispatch(new NavigateForwards());
+  }
 
-    next(): void {
-        this.handleStateUpdatesIfNotLastConfig();
-        this.store.dispatch(new NavigateForwards());
-    }
+  private handleStateUpdatesIfNotLastConfig(): void {
+    // const isNotLastConfig =
+    //   this.activeConfig$.type !== ConfigurationType.BEGUENSTIGTER;
+    // if (isNotLastConfig) {
+    this.configurationViewSwitcher.handleConfigurationUpdates();
+    // }
+  }
 
-    setActiveConfiguration(index: number): void {
-        this.activeConfig = this.configs[index];
-    }
+  previous(): void {
+    this.store.dispatch(new NavigateBackwards());
+  }
 
-    private handleStateUpdatesIfNotLastConfig(): void {
-        const isNotLastConfig = this.activeConfig.type !== ConfigurationType.BEGUENSTIGTER;
-        if (isNotLastConfig) {
-            this.configurationViewSwitcher.handleConfigurationUpdates();
-        }
-    }
+  isNotActivated(i: number): boolean {
+    const selectSnapshot: StoreStateModel = this.store.selectSnapshot(
+      StoreState
+    );
+    return !selectSnapshot.activatedRouteIndices.includes(i);
+  }
 
-    previous(): void {
-        this.store.dispatch(new NavigateBackwards());
-    }
-
-    isNotActivated(i: number): boolean {
-        const selectSnapshot: StoreStateModel = this.store.selectSnapshot(StoreState);
-        return !selectSnapshot.activatedRouteIndices.includes(i);
-    }
+  public setActiveConfiguration(index: number) {
+    this.store.dispatch(new SetActiveConfiguration(index));
+  }
 }

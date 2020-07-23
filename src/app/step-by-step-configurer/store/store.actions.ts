@@ -1,8 +1,11 @@
 export class StoreAction {
   public static readonly type = '[Store] Add item';
 
-  constructor(public payload: number) {
-  }
+  constructor(public payload: number) {}
+}
+
+export class LoadConfigurations {
+  public static readonly type = '[Store] Loading Configurations';
 }
 
 export class NavigateForwards {
@@ -15,4 +18,9 @@ export class NavigateBackwards {
 
 export class DeleteActiveIndices {
   public static readonly type = '[Store] Delete All Indices After Current';
+}
+
+export class SetActiveConfiguration {
+  public static readonly type = '[Store] Set Active Configuration';
+  constructor(public payload?: number) {}
 }
