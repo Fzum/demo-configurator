@@ -71,25 +71,28 @@ export class StoreState {
   public navigateForward(ctx: StateContext<StoreStateModel>): void {
     const currentRouteIndex = ctx.getState().currentRouteIndex;
     const activatedRouteIndices = ctx.getState().activatedRouteIndices;
+    const nextIndex = currentRouteIndex + 1;
 
     if (activatedRouteIndices.includes(currentRouteIndex)) {
       ctx.patchState({
-        currentRouteIndex: currentRouteIndex + 1,
+        currentRouteIndex: nextIndex,
       });
     } else {
       ctx.patchState({
         activatedRouteIndices: [...activatedRouteIndices, currentRouteIndex],
-        currentRouteIndex: currentRouteIndex + 1,
+        currentRouteIndex: nextIndex,
       });
     }
 
-    ctx.dispatch(new SetActiveConfiguration());
+    ctx.dispatch(new SetActiveConfiguration(nextIndex));
   }
 
   @Action(NavigateBackwards)
   public navigateBackward(ctx: StateContext<StoreStateModel>): void {
-    ctx.patchState({ currentRouteIndex: ctx.getState().currentRouteIndex - 1 });
-    ctx.dispatch(new SetActiveConfiguration());
+    const previousIndex = ctx.getState().currentRouteIndex - 1;
+
+    ctx.patchState({ currentRouteIndex: previousIndex });
+    ctx.dispatch(new SetActiveConfiguration(previousIndex));
   }
 
   @Action(SetActiveConfiguration)
@@ -98,16 +101,10 @@ export class StoreState {
     { payload }: SetActiveConfiguration
   ) {
     const state: StoreStateModel = ctx.getState();
-
-    if (payload) {
-      ctx.patchState({
-        activeConfig: state.configurations[payload],
-      });
-    } else {
-      ctx.patchState({
-        activeConfig: state.configurations[state.currentRouteIndex],
-      });
-    }
+    ctx.patchState({
+      currentRouteIndex: payload,
+      activeConfig: state.configurations[payload],
+    });
   }
 
   @Action(DeleteActiveIndices)

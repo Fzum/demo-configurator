@@ -22,5 +22,5 @@ export class DeleteActiveIndices {
 
 export class SetActiveConfiguration {
   public static readonly type = '[Store] Set Active Configuration';
-  constructor(public payload?: number) {}
+  constructor(public payload: number) {}
 }
