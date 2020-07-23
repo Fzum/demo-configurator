@@ -17,7 +17,7 @@ export class AbstractConfiguration<T>
     return this.resetAction;
   }
 
-  getForm(): Observable<any> {
+  getFormState(): Observable<any> {
     return this.form;
     // .pipe(last()
   }

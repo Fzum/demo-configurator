@@ -27,7 +27,7 @@ export class ConfigurationViewSwitcherComponent implements OnInit {
       .abstractConfigurations;
 
     activeConfigurationComponent
-      .getForm()
+      .getFormState()
       .subscribe((form: { dirty: any }) => {
         if (form.dirty) {
           const resetAction = activeConfigurationComponent.getResetAction();

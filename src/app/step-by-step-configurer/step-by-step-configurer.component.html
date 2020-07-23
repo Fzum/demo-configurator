@@ -5,7 +5,10 @@
     *ngFor="let s of service.configs$ | async; let i = index"
     [class.is-active]="s === (service.activeConfig$ | async)"
   >
-    <button [disabled]="service.isRouteNotActivated$" (click)="service.setActiveConfiguration(i)">
+    <button
+      [disabled]="isNotInActivatedRouteIndices(i) | async"
+      (click)="service.setActiveConfiguration(i)"
+    >
       {{ s.type }}
     </button>
   </div>

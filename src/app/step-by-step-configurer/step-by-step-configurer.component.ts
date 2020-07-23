@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ConfigurationViewSwitcherComponent } from '../configuration-view-switcher/configuration-view-switcher.component';
 
 import { StoreFacadeService } from './store/store-facade.service';
+import { Observable, from } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-step-by-step-configurer',
@@ -14,8 +16,7 @@ export class StepByStepConfigurerComponent implements OnInit {
 
   constructor(public service: StoreFacadeService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   next(): void {
     this.handleStateUpdatesIfNotLastConfig();
@@ -32,5 +33,9 @@ export class StepByStepConfigurerComponent implements OnInit {
 
   previous(): void {
     this.service.navigateBackwards();
+  }
+
+  public isNotInActivatedRouteIndices(i: number): Observable<boolean> {
+    return this.service.activatedRouteIndices$.pipe(map((a) => !a.includes(i)));
   }
 }

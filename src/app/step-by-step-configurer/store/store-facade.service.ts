@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ConfigurationstepMockService } from '../../mock/configurationstep-mock-service.service';
 import { ConfigurationStep } from '../../model/configurationstep';
-import { ConfigurationViewSwitcherComponent } from '../../configuration-view-switcher/configuration-view-switcher.component';
-import { ConfigurationType } from '../../model/configuration-type';
-import { Select, Store } from '@ngxs/store';
-import { StoreState, StoreStateModel } from '../store/store.state';
+import { Select } from '@ngxs/store';
+import { StoreState } from '../store/store.state';
 import { Observable } from 'rxjs';
 import {
   NavigateBackwards,
@@ -26,9 +22,6 @@ export class StoreFacadeService {
   @Select(StoreState.configurations) configs$: Observable<ConfigurationStep[]>;
   @Select(StoreState.activeConfiguration) activeConfig$: Observable<
     ConfigurationStep
-  >;
-  @Select(StoreState.isRouteNotActivated) isRouteNotActivated$: Observable<
-    boolean
   >;
 
   constructor() {
