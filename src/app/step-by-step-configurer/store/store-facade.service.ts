@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ConfigurationStep } from '../../model/configurationstep';
 import { Select } from '@ngxs/store';
-import { StoreState } from '../store/store.state';
+import { StoreState, StoreStateModel } from '../store/store.state';
 import { Observable } from 'rxjs';
 import {
   NavigateBackwards,
@@ -18,11 +18,12 @@ export class StoreFacadeService {
   @Select(StoreState.activatedRouteIndices) activatedRouteIndices$: Observable<
     number[]
   >;
-  @Select(StoreState.currentRouteIndex) currentRouteIndex$: Observable<number>;
-  @Select(StoreState.configurations) configs$: Observable<ConfigurationStep[]>;
+  @Select((s: StoreStateModel) => s.currentRouteIndex) currentRouteIndex$: Observable<number>;
+  @Select(StoreState.configurations) configurations$: Observable<ConfigurationStep[]>;
   @Select(StoreState.activeConfiguration) activeConfig$: Observable<
     ConfigurationStep
   >;
+  // @Select((s: StoreStateModel) => s.) isLastConfigurationStep$: Observable<boolean>;
 
   constructor() {
     this.loadConfigurations();

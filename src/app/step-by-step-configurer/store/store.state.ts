@@ -37,11 +37,6 @@ export class StoreState {
   }
 
   @Selector()
-  public static currentRouteIndex(state: StoreStateModel): number {
-    return state.currentRouteIndex;
-  }
-
-  @Selector()
   public static configurations(state: StoreStateModel): ConfigurationStep[] {
     return state.configurations;
   }

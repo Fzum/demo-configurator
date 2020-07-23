@@ -2,7 +2,7 @@
   <div
     fxLayoutAlign="center"
     fxFlex
-    *ngFor="let s of service.configs$ | async; let i = index"
+    *ngFor="let s of service.configurations$ | async; let i = index"
     [class.is-active]="s === (service.activeConfig$ | async)"
   >
     <button
