@@ -19,18 +19,8 @@ export class StepByStepConfigurerComponent implements OnInit {
   ngOnInit(): void {}
 
   next(): void {
-    this.handleStateUpdatesIfNotLastConfig();
+    this.configurationViewSwitcher.handleConfigurationUpdates();
     this.service.navigateForwards();
-  }
-
-  private handleStateUpdatesIfNotLastConfig(): void {
-    this.service.isLastConfigurationStep$.pipe(
-      tap((l) => {
-        if (l) {
-          this.configurationViewSwitcher.handleConfigurationUpdates();
-        }
-      })
-    );
   }
 
   previous(): void {
