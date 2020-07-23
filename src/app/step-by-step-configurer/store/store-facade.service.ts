@@ -10,6 +10,7 @@ import {
   LoadConfigurations,
 } from '../store/store.actions';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
+import { ConfigurationType } from 'src/app/model/configuration-type';
 
 @Injectable({
   providedIn: 'root',
@@ -18,12 +19,19 @@ export class StoreFacadeService {
   @Select(StoreState.activatedRouteIndices) activatedRouteIndices$: Observable<
     number[]
   >;
-  @Select((s: StoreStateModel) => s.currentRouteIndex) currentRouteIndex$: Observable<number>;
-  @Select(StoreState.configurations) configurations$: Observable<ConfigurationStep[]>;
+  @Select((s: StoreStateModel) => s.currentRouteIndex)
+  currentRouteIndex$: Observable<number>;
+  @Select(StoreState.configurations) configurations$: Observable<
+    ConfigurationStep[]
+  >;
   @Select(StoreState.activeConfiguration) activeConfig$: Observable<
     ConfigurationStep
   >;
-  // @Select((s: StoreStateModel) => s.) isLastConfigurationStep$: Observable<boolean>;
+  @Select(
+    (s: StoreStateModel) =>
+      s.activeConfig.type === ConfigurationType.BEGUENSTIGTER
+  )
+  isLastConfigurationStep$: Observable<boolean>;
 
   constructor() {
     this.loadConfigurations();

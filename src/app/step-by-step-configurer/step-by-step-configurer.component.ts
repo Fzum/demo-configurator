@@ -3,7 +3,7 @@ import { ConfigurationViewSwitcherComponent } from '../configuration-view-switch
 
 import { StoreFacadeService } from './store/store-facade.service';
 import { Observable, from } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-step-by-step-configurer',
@@ -24,11 +24,13 @@ export class StepByStepConfigurerComponent implements OnInit {
   }
 
   private handleStateUpdatesIfNotLastConfig(): void {
-    // const isNotLastConfig =
-    //   this.activeConfig$.type !== ConfigurationType.BEGUENSTIGTER;
-    // if (isNotLastConfig) {
-    this.configurationViewSwitcher.handleConfigurationUpdates();
-    // }
+    this.service.isLastConfigurationStep$.pipe(
+      tap((l) => {
+        if (l) {
+          this.configurationViewSwitcher.handleConfigurationUpdates();
+        }
+      })
+    );
   }
 
   previous(): void {
