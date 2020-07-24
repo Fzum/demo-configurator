@@ -17,6 +17,16 @@ export interface BestattungsartStateModel {
   },
 })
 export class BestattungsartState {
+  @Selector()
+  static allItems(state: BestattungsartStateModel) {
+    return state.allItems;
+  }
+
+  @Selector()
+  static selectedItem(state: BestattungsartStateModel) {
+    return state.selectedItem;
+  }
+
   @Action(SelectBestattungsart)
   public markAsDirty(
     ctx: StateContext<BestattungsartStateModel>,

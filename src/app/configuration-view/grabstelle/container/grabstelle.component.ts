@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Select } from '@ngxs/store';
-import { GrabstelleStateModel } from '../data/grabstelle.state';
+import { GrabstelleState } from '../data/grabstelle.state';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,10 +11,10 @@ import { Observable } from 'rxjs';
 export class GrabstelleComponent implements OnInit {
   constructor() {}
 
-  @Select((s: GrabstelleStateModel) => s.allItems)
+  @Select(GrabstelleState.allItems)
   grabstellen$: Observable<string[]>;
 
-  @Select((s: GrabstelleStateModel) => s.selectedItem)
+  @Select(GrabstelleState.selectedItem)
   selectedGrabstelle$: Observable<string>;
 
   ngOnInit(): void {}

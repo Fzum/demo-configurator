@@ -21,6 +21,16 @@ export interface GrabstelleStateModel {
   },
 })
 export class GrabstelleState {
+  @Selector()
+  static allItems(state: GrabstelleStateModel) {
+    return state.allItems;
+  }
+
+  @Selector()
+  static selectedItem(state: GrabstelleStateModel) {
+    return state.selectedItem;
+  }
+
   @Action(ResetGrabstelle)
   public resetGrabstelle(ctx: StateContext<GrabstelleStateModel>) {
     ctx.patchState({ selectedItem: undefined });

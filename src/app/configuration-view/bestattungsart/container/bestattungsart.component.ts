@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { BestattungsartStateModel } from '../data/bestattungsart.state';
+import { BestattungsartStateModel, BestattungsartState } from '../data/bestattungsart.state';
 
 @Component({
   selector: 'app-bestattungsart',
@@ -13,7 +13,7 @@ export class BestattungsartComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  @Select((s: BestattungsartStateModel) => s.allItems)
+  @Select(BestattungsartState.allItems)
   bestattungsarten$: Observable<string[]>;
 
   @Select((s: BestattungsartStateModel) => s.selectedItem)
