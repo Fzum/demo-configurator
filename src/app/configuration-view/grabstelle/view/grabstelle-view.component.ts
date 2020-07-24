@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Grabstelle } from '../data/grabstelle.state';
 
 @Component({
   selector: 'app-grabstelle-view',
@@ -6,16 +7,16 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./grabstelle-view.component.scss'],
 })
 export class GrabstelleViewComponent implements OnInit {
-  @Input() selectedGrabstelle: string;
-  @Input() grabstellen: string[];
+  @Input() selectedGrabstelle: Grabstelle;
+  @Input() grabstellen: Grabstelle[];
 
-  @Output() selectGrabstelleE = new EventEmitter<string>();
+  @Output() selectGrabstelleE = new EventEmitter<Grabstelle>();
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  selectGrabstelle(g: string): void {
+  selectGrabstelle(g: Grabstelle): void {
     this.selectGrabstelleE.emit(g);
   }
 }

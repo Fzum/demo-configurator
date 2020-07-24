@@ -10,7 +10,6 @@ import { GrabstellenFacadeService } from '../data/grabstellen-facade.service'
 export class GrabstelleComponent implements OnInit {
   constructor(public service: GrabstellenFacadeService) {}
 
-
   ngOnInit(): void {}
 
   selectGrabstelle($event: string) {
