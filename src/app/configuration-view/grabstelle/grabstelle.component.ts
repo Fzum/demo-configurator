@@ -1,12 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AbstractConfiguration } from '../abstract-configuration';
 import { FormBuilder } from '@angular/forms';
-import {
-  GrabstelleState,
-  MarkGrabstelleConfigurationAsDirty,
-} from './store/grabstelle.state';
-import { Observable, of } from 'rxjs';
-import { Select, Store } from '@ngxs/store';
+import { Store } from '@ngxs/store';
 import { ResetVerabschiedungsfeier } from '../shared/vorsorge-reset-actions';
 
 @Component({
@@ -17,7 +12,7 @@ import { ResetVerabschiedungsfeier } from '../shared/vorsorge-reset-actions';
 export class GrabstelleComponent
   extends AbstractConfiguration<ResetVerabschiedungsfeier>
   implements OnInit {
-  constructor(private fb: FormBuilder, private store: Store) {
+  constructor(store: Store) {
     super(
       new ResetVerabschiedungsfeier(),
       'grabstelle',
@@ -27,7 +22,4 @@ export class GrabstelleComponent
 
   ngOnInit(): void {}
 
-  markAsDirty() {
-    this.store.dispatch(new MarkGrabstelleConfigurationAsDirty());
-  }
 }

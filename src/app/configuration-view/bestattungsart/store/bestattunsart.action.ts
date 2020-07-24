@@ -1,3 +1,4 @@
-export class MarkBestattungsConfigurationAsDirty {
-  public static readonly type = '[Bestattungsart] Mark Dirty';
+export class SelectBestattungsart {
+  public static readonly type = '[Bestattungsart] Select Bestattungsart';
+  constructor(public payload: string) {}
 }

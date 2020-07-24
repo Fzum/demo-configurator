@@ -1,3 +1,4 @@
-export class MarkGrabstelleConfigurationAsDirty {
-  public static readonly type = '[Grabstelle] Mark Dirty';
+export class SetGrabstelle {
+  public static readonly type = '[Grabstelle] Select Grabstelle';
+  constructor(public payload: string) {}
 }

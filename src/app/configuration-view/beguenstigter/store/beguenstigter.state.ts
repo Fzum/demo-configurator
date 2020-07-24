@@ -3,25 +3,20 @@ import { BeguenstigterConfig } from '../../../model/dummy-config.model';
 import { ResetBeguenstiger } from '../../shared/vorsorge-reset-actions';
 
 export interface BeguenstigterStateModel {
-  model: BeguenstigterConfig;
+  allItems: string[];
+  selectedItem: string;
 }
-
-const defaults: { model: { inputOne: string; inputTwo: string } } = {
-  model: { inputOne: '', inputTwo: '' },
-};
 
 @State<BeguenstigterStateModel>({
   name: 'beguenstigter',
-  defaults,
+  defaults: {
+    allItems: ['begünstigter 1', 'begünstigter 2', 'begünstigter 3'],
+    selectedItem: undefined,
+  },
 })
 export class BeguenstigterState {
-  @Selector()
-  static model(state: BeguenstigterStateModel): BeguenstigterConfig {
-    return state.model;
-  }
-
   @Action(ResetBeguenstiger)
   public resetBeguenstiger(ctx: StateContext<BeguenstigterStateModel>) {
-    ctx.setState(defaults);
+    ctx.patchState({ selectedItem: undefined });
   }
 }

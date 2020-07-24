@@ -9,7 +9,7 @@ import { StepByStepConfigurerComponent } from './step-by-step-configurer/step-by
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { BestattungsartComponent } from './configuration-view/bestattungsart/bestattungsart.component';
+import { BestattungsartComponent } from './configuration-view/bestattungsart/container/bestattungsart.component';
 import { GrabstelleComponent } from './configuration-view/grabstelle/grabstelle.component';
 import { BeguenstigterComponent } from './configuration-view/beguenstigter/beguenstigter.component';
 import { ZusammenfassungComponent } from './configuration-view/zusammenfassung/zusammenfassung.component';
@@ -23,6 +23,7 @@ import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreState } from './step-by-step-configurer/store/store.state';
 import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
+import { BestattungsartViewComponent } from './configuration-view/bestattungsart/view/bestattungsart-view/bestattungsart-view.component';
 
 const configurationStates = [
   BeguenstigterState,
@@ -41,6 +42,7 @@ const configurationStates = [
     BeguenstigterComponent,
     ZusammenfassungComponent,
     ConfigurationViewSwitcherComponent,
+    BestattungsartViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,6 @@ const configurationStates = [
     [
       NgxsModule.forRoot(configurationStates),
       NgxsReduxDevtoolsPluginModule.forRoot(),
-      NgxsFormPluginModule.forRoot(),
       NgxsDispatchPluginModule,
     ],
   ],

@@ -1,0 +1,10 @@
+<div fxLayoutAlign="space-between">
+  <button
+    [disabled]="b === selectedBestattungsart"
+    (click)="selectBestattungsart(b)"
+    fxFlex
+    *ngFor="let b of bestattungsarten"
+  >
+    {{ b }}
+  </button>
+</div>

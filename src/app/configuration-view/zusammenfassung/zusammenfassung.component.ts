@@ -18,14 +18,5 @@ import { BeguenstigterState } from '../beguenstigter/store/beguenstigter.state';
 export class ZusammenfassungComponent implements OnInit {
   constructor(private store: Store) {}
 
-  @Select(BestattungsartState.model)
-  bestattungsartModel$: Observable<BestattungsArtConfig>;
-
-  @Select(GrabstelleState.model)
-  grabstellenModel$: Observable<GrabstellenConfig>;
-
-  @Select(BeguenstigterState.model)
-  beguenstigterMode$: Observable<BeguenstigterConfig>;
-
   ngOnInit(): void {}
 }
