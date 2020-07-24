@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GrabstellenFacadeService } from '../data/grabstellen-facade.service'
+import { Grabstelle } from '../data/grabstelle.state';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class GrabstelleComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  selectGrabstelle($event: string) {
+  selectGrabstelle($event: Grabstelle) {
     this.service.selectGrabstelle($event);
   }
 }

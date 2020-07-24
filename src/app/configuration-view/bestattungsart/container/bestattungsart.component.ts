@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
 import {
-  BestattungsartStateModel,
-  BestattungsartState,
   BestattungsItem,
 } from '../data/bestattungsart.state';
-import { SelectBestattungsart } from '../data/bestattunsart.action';
 import { BestattungsartFacadeService } from '../data/bestattungsart-facade.service';
 
 @Component({
