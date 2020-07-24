@@ -11,7 +11,7 @@ export interface BeguenstigterStateModel {
   name: 'beguenstigter',
   defaults: {
     allItems: ['begünstigter 1', 'begünstigter 2', 'begünstigter 3'],
-    selectedItem: undefined,
+    selectedItem: '',
   },
 })
 export class BeguenstigterState {

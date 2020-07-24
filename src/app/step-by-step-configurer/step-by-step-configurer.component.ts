@@ -19,7 +19,6 @@ export class StepByStepConfigurerComponent implements OnInit {
   ngOnInit(): void {}
 
   next(): void {
-    this.configurationViewSwitcher.handleConfigurationUpdates();
     this.service.navigateForwards();
   }
 

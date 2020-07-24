@@ -20,26 +20,4 @@ export class ConfigurationViewSwitcherComponent implements OnInit {
   abstractConfigurations: ConfigruationChangedContract<any>; // typesafety unknown extends XY
 
   ngOnInit(): void {}
-
-  public handleConfigurationUpdates(): void {
-    const activeConfigurationComponent: ConfigruationChangedContract<any> = this
-      .abstractConfigurations;
-
-    activeConfigurationComponent
-      .getFormState()
-      .pipe(filter((f) => f !== undefined))
-      .subscribe((form: { dirty: any }) => {
-        if (form.dirty) {
-          const resetAction = activeConfigurationComponent.getResetAction();
-          const setFormAction = new SetFormPristine(
-            activeConfigurationComponent.getResetPath()
-          );
-          const deleteActiveIndices = new DeleteActiveIndices();
-
-          this.store.dispatch(resetAction);
-          this.store.dispatch(setFormAction);
-          this.store.dispatch(deleteActiveIndices);
-        }
-      });
-  }
 }

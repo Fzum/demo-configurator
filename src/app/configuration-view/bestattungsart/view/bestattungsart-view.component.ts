@@ -6,6 +6,7 @@ import {
   EventEmitter,
   OnChanges,
 } from '@angular/core';
+import { BestattungsItem } from '../data/bestattungsart.state';
 
 @Component({
   selector: 'app-bestattungsart-view',
@@ -13,10 +14,10 @@ import {
   styleUrls: ['./bestattungsart-view.component.scss'],
 })
 export class BestattungsartViewComponent implements OnInit, OnChanges {
-  @Input() selectedBestattungsart: string;
-  @Input() bestattungsarten: string[];
+  @Input() selectedBestattungsart: BestattungsItem;
+  @Input() bestattungsarten: BestattungsItem[];
 
-  @Output() selectBestattungsartE = new EventEmitter<string>();
+  @Output() selectBestattungsartE = new EventEmitter<BestattungsItem>();
 
   constructor() {}
 
@@ -27,7 +28,7 @@ export class BestattungsartViewComponent implements OnInit, OnChanges {
     console.log(this.bestattungsarten);
   }
 
-  selectBestattungsart(b: string): void {
+  selectBestattungsart(b: BestattungsItem): void {
     this.selectBestattungsartE.emit(b);
   }
 }

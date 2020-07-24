@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import {
   BestattungsartStateModel,
   BestattungsartState,
+  BestattungsItem,
 } from '../data/bestattungsart.state';
 import { SelectBestattungsart } from '../data/bestattunsart.action';
 
@@ -18,12 +19,12 @@ export class BestattungsartComponent implements OnInit {
   ngOnInit(): void {}
 
   @Select(BestattungsartState.allItems)
-  bestattungsarten$: Observable<string[]>;
+  bestattungsarten$: Observable<BestattungsItem[]>;
 
-  @Select((s: BestattungsartStateModel) => s.selectedItem)
-  selectedBestattungsart$: Observable<string>;
+  @Select(BestattungsartState.selectedItem)
+  selectedBestattungsart$: Observable<BestattungsItem>;
 
-  selectBestattunsgsart($event: string) {
+  selectBestattunsgsart($event: BestattungsItem) {
     this.store.dispatch(new SelectBestattungsart($event));
   }
 }
