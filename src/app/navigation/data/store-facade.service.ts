@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import {
   NavigateBackwards,
   NavigateForwards,
-  SetActiveConfiguration,
+  NavigateToConfiguration as NavigateToConfiguration,
   LoadConfigurations,
 } from '../data/store.actions';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
@@ -47,7 +47,7 @@ export class StoreFacadeService {
   }
 
   @Dispatch()
-  public setActiveConfiguration(index: number) {
-    return new SetActiveConfiguration(index);
+  public navigateToConfig(index: number) {
+    return new NavigateToConfiguration(index);
   }
 }

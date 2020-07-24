@@ -19,7 +19,7 @@ export class DeleteActiveIndices {
   public static readonly type = '[Navigation] Delete All Indices After Current';
 }
 
-export class SetActiveConfiguration {
+export class NavigateToConfiguration {
   public static readonly type = '[Navigation] Set Active Configuration';
   constructor(public payload: number) {}
 }

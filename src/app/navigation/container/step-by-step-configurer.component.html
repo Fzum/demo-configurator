@@ -1,5 +1,5 @@
 <app-navigation-view
-  (navigateToIndexE)="service.setActiveConfiguration($event)"
+  (navigateToIndexE)="service.navigateToConfig($event)"
   (navigateFrontE)="service.navigateForwards()"
   (navigateBackE)="service.navigateBackwards()"
   [configurations]="service.configurations$ | async"

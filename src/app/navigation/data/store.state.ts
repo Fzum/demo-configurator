@@ -5,7 +5,7 @@ import {
   NavigateForwards,
   AddActivatedRoute,
   LoadConfigurations,
-  SetActiveConfiguration,
+  NavigateToConfiguration,
 } from './store.actions';
 import { Injectable } from '@angular/core';
 import { ConfigurationStep } from '../model/configurationstep';
@@ -84,7 +84,7 @@ export class StoreState {
       });
     }
 
-    ctx.dispatch(new SetActiveConfiguration(nextIndex));
+    ctx.dispatch(new NavigateToConfiguration(nextIndex));
   }
 
   @Action(NavigateBackwards)
@@ -92,13 +92,13 @@ export class StoreState {
     const previousIndex = ctx.getState().currentRouteIndex - 1;
 
     ctx.patchState({ currentRouteIndex: previousIndex });
-    ctx.dispatch(new SetActiveConfiguration(previousIndex));
+    ctx.dispatch(new NavigateToConfiguration(previousIndex));
   }
 
-  @Action(SetActiveConfiguration)
+  @Action(NavigateToConfiguration)
   public setActiveConfiguration(
     ctx: StateContext<StoreStateModel>,
-    { payload }: SetActiveConfiguration
+    { payload }: NavigateToConfiguration
   ) {
     const state: StoreStateModel = ctx.getState();
     ctx.patchState({
