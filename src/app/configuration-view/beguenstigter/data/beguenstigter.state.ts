@@ -1,5 +1,6 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { ResetBeguenstiger } from '../../shared/vorsorge-reset-actions';
+import { SelectBeguenstigter } from './beguenstigter.actions';
 
 export interface Beguenstiger {
   name: string;
@@ -31,6 +32,14 @@ export class BeguenstigterState {
   @Selector()
   static selectedBeguenstigter(state: BeguenstigterStateModel): Beguenstiger {
     return state.selectedBeguenstigter;
+  }
+
+  @Action(SelectBeguenstigter)
+  public selectBeguenstigter(
+    ctx: StateContext<BeguenstigterStateModel>,
+    { payload }: SelectBeguenstigter
+  ) {
+    ctx.patchState({ selectedBeguenstigter: payload });
   }
 
   @Action(ResetBeguenstiger)

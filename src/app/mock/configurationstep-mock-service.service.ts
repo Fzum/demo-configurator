@@ -19,8 +19,8 @@ export class ConfigurationstepMockService {
         header: 'Welche Grabstelle willst du?',
       },
       {
-        type: ConfigurationType.VERABSCHIEDUNGSFEIER,
-        header: 'Willst du eine Verabschiedung?',
+        type: ConfigurationType.BEGUENSTIGTER,
+        header: 'Gibt es einen Begünstigten?',
       },
       {
         type: ConfigurationType.ZUSAMMENFASSUNG,
