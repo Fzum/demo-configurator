@@ -13,7 +13,7 @@ import { BestattungsItem } from '../data/bestattungsart.state';
   templateUrl: './bestattungsart-view.component.html',
   styleUrls: ['./bestattungsart-view.component.scss'],
 })
-export class BestattungsartViewComponent implements OnInit, OnChanges {
+export class BestattungsartViewComponent implements OnInit {
   @Input() selectedBestattungsart: BestattungsItem;
   @Input() bestattungsarten: BestattungsItem[];
 
@@ -22,11 +22,6 @@ export class BestattungsartViewComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnInit(): void {}
-
-  ngOnChanges(): void {
-    console.log(this.selectedBestattungsart);
-    console.log(this.bestattungsarten);
-  }
 
   selectBestattungsart(b: BestattungsItem): void {
     this.selectBestattungsartE.emit(b);
