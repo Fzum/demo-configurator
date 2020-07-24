@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  BestattungsItem,
-} from '../data/bestattungsart.state';
 import { BestattungsartFacadeService } from '../data/bestattungsart-facade.service';
+import { BestattungsItem } from '../model/bestattung.model';
 
 @Component({
   selector: 'app-bestattungsart',

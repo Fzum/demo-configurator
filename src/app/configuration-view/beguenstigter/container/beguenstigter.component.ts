@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Beguenstiger } from '../data/beguenstigter.state';
 import { BeguenstigerFacadeService } from '../data/beguenstiger-facade.service';
+import { Beguenstiger } from '../model/beguenstiger.model';
 
 @Component({
   selector: 'app-beguenstigter',

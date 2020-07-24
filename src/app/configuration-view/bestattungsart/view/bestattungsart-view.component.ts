@@ -6,7 +6,7 @@ import {
   EventEmitter,
   OnChanges,
 } from '@angular/core';
-import { BestattungsItem } from '../data/bestattungsart.state';
+import { BestattungsItem } from '../model/bestattung.model';
 
 @Component({
   selector: 'app-bestattungsart-view',

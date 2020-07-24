@@ -8,7 +8,7 @@ import {
   SetActiveConfiguration,
 } from './store.actions';
 import { Injectable } from '@angular/core';
-import { ConfigurationStep } from '../../model/configurationstep';
+import { ConfigurationStep } from '../model/configurationstep';
 import { ConfigurationstepMockService } from '../mock.service';
 
 export interface StoreStateModel {

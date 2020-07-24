@@ -1,4 +1,4 @@
-import { BestattungsItem } from './bestattungsart.state';
+import { BestattungsItem } from '../model/bestattung.model';
 
 export class SelectBestattungsart {
   public static readonly type = '[Bestattungsart] Select Bestattungsart';

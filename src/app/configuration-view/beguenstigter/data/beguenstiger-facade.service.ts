@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
-import { Beguenstiger, BeguenstigterState } from './beguenstigter.state';
+import {  BeguenstigterState } from './beguenstigter.state';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { SelectBeguenstigter } from './beguenstigter.actions';
 import { Observable } from 'rxjs';
+import { Beguenstiger } from '../model/beguenstiger.model';
 
 @Injectable({
   providedIn: 'root',

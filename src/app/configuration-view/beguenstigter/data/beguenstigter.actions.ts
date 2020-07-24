@@ -1,4 +1,4 @@
-import { Beguenstiger } from './beguenstigter.state';
+import { Beguenstiger } from '../model/beguenstiger.model';
 
 export class SelectBeguenstigter {
   public static readonly type = '[Beguenstigter] Select Beguenstigter';

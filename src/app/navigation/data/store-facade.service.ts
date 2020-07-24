@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ConfigurationStep } from '../../model/configurationstep';
+import { ConfigurationStep } from '../model/configurationstep';
 import { Select } from '@ngxs/store';
 import { StoreState, StoreStateModel } from '../data/store.state';
 import { Observable } from 'rxjs';

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BestattungsartState, BestattungsItem } from './bestattungsart.state';
+import { BestattungsartState } from './bestattungsart.state';
 import { Observable } from 'rxjs/internal/Observable';
 import { SelectBestattungsart } from './bestattunsart.action';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { Select } from '@ngxs/store';
+import { BestattungsItem } from '../model/bestattung.model';
 
 @Injectable({
   providedIn: 'root',

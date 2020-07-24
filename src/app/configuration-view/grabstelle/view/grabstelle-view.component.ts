@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Grabstelle } from '../data/grabstelle.state';
+import { Grabstelle } from '../model/grabstelle.model';
 
 @Component({
   selector: 'app-grabstelle-view',

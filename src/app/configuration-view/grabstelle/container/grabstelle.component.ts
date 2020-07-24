@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GrabstellenFacadeService } from '../data/grabstellen-facade.service'
-import { Grabstelle } from '../data/grabstelle.state';
+import { Grabstelle } from '../model/grabstelle.model';
 
 
 @Component({
