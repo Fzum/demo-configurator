@@ -4,20 +4,30 @@ import {
   ResetVerabschiedungsfeier,
   ResetGrabstelle,
 } from '../../shared/vorsorge-reset-actions';
-import { Observable } from 'rxjs';
 import { DeleteActiveIndices } from 'src/app/step-by-step-configurer/store/store.actions';
 import { SelectGrabstelle } from './grabstelle.action';
 
+export interface Grabstelle {
+  titel: string;
+  place: string;
+}
+
 export interface GrabstelleStateModel {
-  allItems: string[];
-  selectedItem: string;
+  allItems: Grabstelle[];
+  selectedItem: Grabstelle;
 }
 
 @State<GrabstelleStateModel>({
   name: 'grabstelle',
   defaults: {
-    allItems: ['grabstelle 1', 'grabstelle 2', 'grabstelle 3'],
-    selectedItem: '',
+    allItems: [
+      { titel: 'Grabstelle 1', place: 'Ort 1' },
+      { titel: 'Grabstelle 2', place: 'Ort 2' },
+      { titel: 'Grabstelle 3', place: 'Ort 3' },
+      { titel: 'Grabstelle 4', place: 'Ort 4' },
+      { titel: 'Grabstelle 5', place: 'Ort 5' },
+    ],
+    selectedItem: undefined,
   },
 })
 export class GrabstelleState {
@@ -33,7 +43,7 @@ export class GrabstelleState {
 
   @Action(ResetGrabstelle)
   public resetGrabstelle(ctx: StateContext<GrabstelleStateModel>) {
-    ctx.patchState({ selectedItem: '' });
+    ctx.patchState({ selectedItem: undefined });
     ctx.dispatch(new ResetVerabschiedungsfeier());
   }
 

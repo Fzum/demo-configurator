@@ -10,7 +10,6 @@ import {
   LoadConfigurations,
 } from '../store/store.actions';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
-import { ConfigurationType } from 'src/app/model/configuration-type';
 
 @Injectable({
   providedIn: 'root',

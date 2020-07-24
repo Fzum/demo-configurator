@@ -19,6 +19,7 @@ export interface BestattungsartStateModel {
     allItems: [
       { title: 'Erdbestattung', description: 'ab in die erde' },
       { title: 'Feuerbestattung', description: 'ab ins feuer' },
+      { title: 'Alternative Bestattung', description: 'was besonderes' },
     ],
     selectedItem: undefined,
   },

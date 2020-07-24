@@ -1,0 +1,5 @@
+<app-beguenstiger-view
+  (selectBeguenstigerE)="selectBeguenstiger($event)"
+  [beguenstige]="service.beguenstigte$ | async"
+  [selectedBeguenstiger]="service.selectedBeguenstigter$ | async"
+></app-beguenstiger-view>

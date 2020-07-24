@@ -1,1 +1,10 @@
-<p>beguenstiger-view works!</p>
+<div fxLayoutAlign="space-between">
+  <button
+    [disabled]="b === selectedBeguenstiger"
+    (click)="selectBeguenstigter(b)"
+    fxFlex
+    *ngFor="let b of beguenstiger"
+  >
+    {{ b.name + ' ' + b.lastname }}
+  </button>
+</div>

@@ -1,4 +1,6 @@
+import { Grabstelle } from './grabstelle.state';
+
 export class SelectGrabstelle {
   public static readonly type = '[Grabstelle] Select Grabstelle';
-  constructor(public payload: string) {}
+  constructor(public payload: Grabstelle) {}
 }

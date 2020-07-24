@@ -1,22 +1,40 @@
-import { State, Action, Selector, StateContext } from '@ngxs/store';
-import { BeguenstigterConfig } from '../../../model/dummy-config.model';
+import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { ResetBeguenstiger } from '../../shared/vorsorge-reset-actions';
 
+export interface Beguenstiger {
+  name: string;
+  lastname: string;
+}
+
 export interface BeguenstigterStateModel {
-  allItems: string[];
-  selectedItem: string;
+  beguenstigte: Beguenstiger[];
+  selectedBeguenstigter: Beguenstiger;
 }
 
 @State<BeguenstigterStateModel>({
   name: 'beguenstigter',
   defaults: {
-    allItems: ['begünstigter 1', 'begünstigter 2', 'begünstigter 3'],
-    selectedItem: '',
+    beguenstigte: [
+      { name: 'Niklas', lastname: 'Peura' },
+      { name: 'Milan', lastname: 'Koniar' },
+      { name: 'Fabian', lastname: 'Sellemond' },
+    ],
+    selectedBeguenstigter: undefined,
   },
 })
 export class BeguenstigterState {
+  @Selector()
+  static beguenstigte(state: BeguenstigterStateModel): Beguenstiger[] {
+    return state.beguenstigte;
+  }
+
+  @Selector()
+  static selectedBeguenstigter(state: BeguenstigterStateModel): Beguenstiger {
+    return state.selectedBeguenstigter;
+  }
+
   @Action(ResetBeguenstiger)
   public resetBeguenstiger(ctx: StateContext<BeguenstigterStateModel>) {
-    ctx.patchState({ selectedItem: undefined });
+    ctx.patchState({ selectedBeguenstigter: undefined });
   }
 }

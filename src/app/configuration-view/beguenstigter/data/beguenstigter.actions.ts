@@ -1,7 +1,6 @@
-import { BeguenstigterConfig } from '../../../model/dummy-config.model';
-import { ConfigurationChangeAction } from '../../shared/vorsorge-configuration.actions';
+import { Beguenstiger } from './beguenstigter.state';
 
-export class ChangeBeguenstigter implements ConfigurationChangeAction {
-  public static readonly type = '[VorsorgeConfiguration] Change Beguenstigter';
-  constructor(public payload: BeguenstigterConfig) {}
+export class SelectBeguenstigter {
+  public static readonly type = '[Beguenstigter] Select Beguenstigter';
+  constructor(public payload: Beguenstiger) {}
 }
