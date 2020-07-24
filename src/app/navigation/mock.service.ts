@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ConfigurationStep } from '../model/configurationstep';
-import { ConfigurationType } from '../model/configuration-type';
+import { ConfigurationStep } from './model/configurationstep';
+import { ConfigurationType } from './model/configuration-type';
 
 @Injectable({
   providedIn: 'root',

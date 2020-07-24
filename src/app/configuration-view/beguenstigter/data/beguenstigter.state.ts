@@ -1,10 +1,6 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { SelectBeguenstigter } from './beguenstigter.actions';
-
-export interface Beguenstiger {
-  name: string;
-  lastname: string;
-}
+import { Beguenstiger } from '../model/beguenstiger.model';
 
 export interface BeguenstigterStateModel {
   beguenstigte: Beguenstiger[];

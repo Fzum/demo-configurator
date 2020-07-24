@@ -1,4 +1,4 @@
-import { Grabstelle } from './grabstelle.state';
+import { Grabstelle } from '../model/grabstelle.model';
 
 export class SelectGrabstelle {
   public static readonly type = '[Grabstelle] Select Grabstelle';

@@ -1,12 +1,8 @@
 import { State, Action, Selector, StateContext } from '@ngxs/store';
-import { DeleteActiveIndices } from 'src/app/step-by-step-configurer/store/store.actions';
+import { DeleteActiveIndices } from '../../../navigation/data/store.actions';
 import { SelectBestattungsart } from './bestattunsart.action';
 import { ResetGrabstelle } from '../../grabstelle/data/grabstelle.action';
-
-export interface BestattungsItem {
-  title: string;
-  description: string;
-}
+import { BestattungsItem } from '../model/bestattung.model';
 
 export interface BestattungsartStateModel {
   allItems: BestattungsItem[];

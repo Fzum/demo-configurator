@@ -9,7 +9,7 @@ import {
 } from './store.actions';
 import { Injectable } from '@angular/core';
 import { ConfigurationStep } from '../../model/configurationstep';
-import { ConfigurationstepMockService } from '../configurationstep-mock-service.service';
+import { ConfigurationstepMockService } from '../mock.service';
 
 export interface StoreStateModel {
   currentRouteIndex: number;

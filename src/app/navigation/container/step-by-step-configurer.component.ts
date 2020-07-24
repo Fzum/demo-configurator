@@ -10,5 +10,4 @@ export class StepByStepConfigurerComponent implements OnInit {
   constructor(public service: StoreFacadeService) {}
 
   ngOnInit(): void {}
-
 }

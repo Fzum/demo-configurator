@@ -5,7 +5,7 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StepByStepConfigurerComponent } from './step-by-step-configurer/container/step-by-step-configurer.component';
+import { StepByStepConfigurerComponent } from './navigation/container/step-by-step-configurer.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -18,13 +18,13 @@ import { BeguenstigterState } from './configuration-view/beguenstigter/data/begu
 import { BestattungsartState } from './configuration-view/bestattungsart/data/bestattungsart.state';
 import { GrabstelleState } from './configuration-view/grabstelle/data/grabstelle.state';
 import { ReactiveFormsModule } from '@angular/forms';
-import { StoreState } from './step-by-step-configurer/data/store.state';
+import { StoreState } from './navigation/data/store.state';
 import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
 import { BestattungsartViewComponent } from './configuration-view/bestattungsart/view/bestattungsart-view.component';
 import { GrabstelleViewComponent } from './configuration-view/grabstelle/view/grabstelle-view.component';
 import { BeguenstigerViewComponent } from './configuration-view/beguenstigter/view/beguenstiger-view.component';
 import { ZusammenfassungViewComponent } from './configuration-view/zusammenfassung/view/zusammenfassung-view.component';
-import { NavigationViewComponent } from './step-by-step-configurer/view/navigation-view.component';
+import { NavigationViewComponent } from './navigation/view/navigation-view.component';
 
 const configurationStates = [
   BeguenstigterState,

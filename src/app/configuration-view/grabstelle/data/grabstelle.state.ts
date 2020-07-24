@@ -1,12 +1,8 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { DeleteActiveIndices } from 'src/app/step-by-step-configurer/store/store.actions';
 import { SelectGrabstelle, ResetGrabstelle } from './grabstelle.action';
 import { ResetBeguenstiger } from '../../beguenstigter/data/beguenstigter.actions';
-
-export interface Grabstelle {
-  titel: string;
-  place: string;
-}
+import { DeleteActiveIndices } from 'src/app/navigation/data/store.actions';
+import { Grabstelle } from '../model/grabstelle.model';
 
 export interface GrabstelleStateModel {
   allItems: Grabstelle[];
