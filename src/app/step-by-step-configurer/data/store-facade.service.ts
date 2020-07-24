@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ConfigurationStep } from '../../model/configurationstep';
 import { Select } from '@ngxs/store';
-import { StoreState, StoreStateModel } from '../store/store.state';
+import { StoreState, StoreStateModel } from '../data/store.state';
 import { Observable } from 'rxjs';
 import {
   NavigateBackwards,
   NavigateForwards,
   SetActiveConfiguration,
   LoadConfigurations,
-} from '../store/store.actions';
+} from '../data/store.actions';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 
 @Injectable({

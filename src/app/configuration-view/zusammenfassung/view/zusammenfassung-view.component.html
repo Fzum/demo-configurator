@@ -1,1 +1,15 @@
-<p>zusammenfassung-view works!</p>
+<div fxLayoutAlign="space-between">
+  <div>
+    <h1>Bestattungsart</h1>
+    {{ bestattungsart.selectedItem | json }}
+  </div>
+
+  <div>
+    <h1>Grabstelle</h1>
+    {{ grabstelle.selectedItem | json }}
+  </div>
+  <div>
+    <h1>Begünstigter</h1>
+    {{ beguenstigter.selectedBeguenstigter | json }}
+  </div>
+</div>

@@ -1,11 +1,7 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { GrabstellenConfig } from '../../../model/dummy-config.model';
-import {
-  ResetVerabschiedungsfeier,
-  ResetGrabstelle,
-} from '../../shared/vorsorge-reset-actions';
 import { DeleteActiveIndices } from 'src/app/step-by-step-configurer/store/store.actions';
-import { SelectGrabstelle } from './grabstelle.action';
+import { SelectGrabstelle, ResetGrabstelle } from './grabstelle.action';
+import { ResetBeguenstiger } from '../../beguenstigter/data/beguenstigter.actions';
 
 export interface Grabstelle {
   titel: string;
@@ -44,7 +40,7 @@ export class GrabstelleState {
   @Action(ResetGrabstelle)
   public resetGrabstelle(ctx: StateContext<GrabstelleStateModel>) {
     ctx.patchState({ selectedItem: undefined });
-    ctx.dispatch(new ResetVerabschiedungsfeier());
+    ctx.dispatch(new ResetBeguenstiger());
   }
 
   @Action(SelectGrabstelle)
@@ -53,7 +49,7 @@ export class GrabstelleState {
     { payload }: SelectGrabstelle
   ) {
     ctx.patchState({ selectedItem: payload });
-    ctx.dispatch(new ResetVerabschiedungsfeier());
+    ctx.dispatch(new ResetBeguenstiger());
     ctx.dispatch(new DeleteActiveIndices());
   }
 }

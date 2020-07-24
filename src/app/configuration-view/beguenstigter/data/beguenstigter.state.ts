@@ -1,5 +1,4 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { ResetBeguenstiger } from '../../shared/vorsorge-reset-actions';
 import { SelectBeguenstigter } from './beguenstigter.actions';
 
 export interface Beguenstiger {
@@ -42,7 +41,7 @@ export class BeguenstigterState {
     ctx.patchState({ selectedBeguenstigter: payload });
   }
 
-  @Action(ResetBeguenstiger)
+  @Action(SelectBeguenstigter)
   public resetBeguenstiger(ctx: StateContext<BeguenstigterStateModel>) {
     ctx.patchState({ selectedBeguenstigter: undefined });
   }

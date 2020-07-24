@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngxs/store';
+import { ZusammenfassungFacadeService  } from '../data/zusammenfassung-facade.service';
 
 @Component({
   selector: 'app-zusammenfassung',
@@ -7,7 +7,7 @@ import { Store } from '@ngxs/store';
   styleUrls: ['./zusammenfassung.component.scss'],
 })
 export class ZusammenfassungComponent implements OnInit {
-  constructor() {}
+  constructor(public service: ZusammenfassungFacadeService) {}
 
   ngOnInit(): void {}
 }

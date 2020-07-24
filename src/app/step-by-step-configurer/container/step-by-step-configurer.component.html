@@ -1,0 +1,7 @@
+<app-navigation-view
+  (navigateFrontE)="service.navigateForwards()"
+  (navigateBackE)="service.navigateBackwards()"
+  [configurations]="service.configurations$ | async"
+  [activatedRouteIndices]="service.activatedRouteIndices$ | async"
+  [activeConfiguration]="service.activeConfig$ | async"
+></app-navigation-view>

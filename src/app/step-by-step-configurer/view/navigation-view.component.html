@@ -1,0 +1,38 @@
+<div fxLayoutAlign="space-between">
+  <div
+    fxLayoutAlign="center"
+    fxFlex
+    *ngFor="let s of configurations; let i = index"
+    [class.is-active]="s === activeConfiguration"
+  >
+    <button
+      [disabled]="isNotInActivatedRouteIndices(i)"
+      (click)="navigateToIndex(i)"
+    >
+      {{ s.type }}
+    </button>
+  </div>
+</div>
+<div fxLayoutAlign="space-between">
+  <button (click)="navigateBack()">Zurück</button>
+  <h1>{{ activeConfiguration.header }}</h1>
+  <button (click)="navigateFront()">Weiter</button>
+</div>
+<div [ngSwitch]="activeConfiguration.type">
+  <app-bestattungsart
+    *ngSwitchCase="'Bestattungsart'"
+    #abstractConfiguration
+  ></app-bestattungsart>
+  <app-grabstelle
+    *ngSwitchCase="'Grabstelle'"
+    #abstractConfiguration
+  ></app-grabstelle>
+  <app-beguenstigter
+    *ngSwitchCase="'Begünstigter'"
+    #abstractConfiguration
+  ></app-beguenstigter>
+  <app-zusammenfassung
+    *ngSwitchCase="'Zusammenfassung'"
+    #abstractConfiguration
+  ></app-zusammenfassung>
+</div>

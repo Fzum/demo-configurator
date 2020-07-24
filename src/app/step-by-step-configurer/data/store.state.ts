@@ -3,13 +3,13 @@ import {
   DeleteActiveIndices,
   NavigateBackwards,
   NavigateForwards,
-  StoreAction,
+  AddActivatedRoute,
   LoadConfigurations,
   SetActiveConfiguration,
 } from './store.actions';
-import { ConfigurationstepMockService } from 'src/app/mock/configurationstep-mock-service.service';
-import { ConfigurationStep } from 'src/app/model/configurationstep';
 import { Injectable } from '@angular/core';
+import { ConfigurationStep } from '../../model/configurationstep';
+import { ConfigurationstepMockService } from '../configurationstep-mock-service.service';
 
 export interface StoreStateModel {
   currentRouteIndex: number;
@@ -32,17 +32,17 @@ export class StoreState {
   constructor(private service: ConfigurationstepMockService) {}
 
   @Selector()
-  public static activatedRouteIndices(state: StoreStateModel): number[] {
+  static activatedRouteIndices(state: StoreStateModel): number[] {
     return state.activatedRouteIndices;
   }
 
   @Selector()
-  public static configurations(state: StoreStateModel): ConfigurationStep[] {
+  static configurations(state: StoreStateModel): ConfigurationStep[] {
     return state.configurations;
   }
 
   @Selector()
-  public static activeConfiguration(state: StoreStateModel): ConfigurationStep {
+  static activeConfiguration(state: StoreStateModel): ConfigurationStep {
     return state.activeConfig;
   }
 
@@ -54,10 +54,10 @@ export class StoreState {
     ctx.patchState({ configurations, activeConfig });
   }
 
-  @Action(StoreAction)
+  @Action(AddActivatedRoute)
   public add(
     ctx: StateContext<StoreStateModel>,
-    { payload }: StoreAction
+    { payload }: AddActivatedRoute
   ): void {
     const stateModel = ctx.getState();
     stateModel.activatedRouteIndices = [
