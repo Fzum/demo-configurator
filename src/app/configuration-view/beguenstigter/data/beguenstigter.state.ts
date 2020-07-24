@@ -1,5 +1,8 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { SelectBeguenstigter } from './beguenstigter.actions';
+import {
+  SelectBeguenstigter,
+  ResetBeguenstiger,
+} from './beguenstigter.actions';
 import { Beguenstiger } from '../model/beguenstiger.model';
 
 export interface BeguenstigterStateModel {
@@ -37,7 +40,7 @@ export class BeguenstigterState {
     ctx.patchState({ selectedBeguenstigter: payload });
   }
 
-  @Action(SelectBeguenstigter)
+  @Action(ResetBeguenstiger)
   public resetBeguenstiger(ctx: StateContext<BeguenstigterStateModel>) {
     ctx.patchState({ selectedBeguenstigter: undefined });
   }
