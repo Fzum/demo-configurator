@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
-import { GrabstelleState } from '../data/grabstelle.state';
+import { GrabstelleState, Grabstelle } from '../data/grabstelle.state';
 import { Observable } from 'rxjs';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { SelectGrabstelle } from './grabstelle.action';
@@ -10,15 +10,13 @@ import { SelectGrabstelle } from './grabstelle.action';
 })
 export class GrabstellenFacadeService {
   @Select(GrabstelleState.allItems)
-  grabstellen$: Observable<string[]>;
+  grabstellen$: Observable<Grabstelle[]>;
 
   @Select(GrabstelleState.selectedItem)
-  selectedGrabstelle$: Observable<string>;
-
-  constructor(private store: Store) {}
+  selectedGrabstelle$: Observable<Grabstelle>;
 
   @Dispatch()
-  selectGrabstelle($event: string) {
+  selectGrabstelle($event: Grabstelle) {
     return new SelectGrabstelle($event);
   }
 }

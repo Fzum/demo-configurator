@@ -7,6 +7,7 @@ import {
   BestattungsItem,
 } from '../data/bestattungsart.state';
 import { SelectBestattungsart } from '../data/bestattunsart.action';
+import { BestattungsartFacadeService } from '../data/bestattungsart-facade.service';
 
 @Component({
   selector: 'app-bestattungsart',
@@ -14,17 +15,11 @@ import { SelectBestattungsart } from '../data/bestattunsart.action';
   styleUrls: ['./bestattungsart.component.scss'],
 })
 export class BestattungsartComponent implements OnInit {
-  constructor(private store: Store) {}
+  constructor(public service: BestattungsartFacadeService) {}
 
   ngOnInit(): void {}
 
-  @Select(BestattungsartState.allItems)
-  bestattungsarten$: Observable<BestattungsItem[]>;
-
-  @Select(BestattungsartState.selectedItem)
-  selectedBestattungsart$: Observable<BestattungsItem>;
-
   selectBestattunsgsart($event: BestattungsItem) {
-    this.store.dispatch(new SelectBestattungsart($event));
+    this.service.selectBestattungsart($event);
   }
 }

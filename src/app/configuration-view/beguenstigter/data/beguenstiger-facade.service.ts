@@ -15,8 +15,6 @@ export class BeguenstigerFacadeService {
   @Select(BeguenstigterState.selectedBeguenstigter)
   selectedBeguenstigter$: Observable<Beguenstiger>;
 
-  constructor(private store: Store) {}
-
   @Dispatch()
   selectBeguenstigter(b: Beguenstiger) {
     return new SelectBeguenstigter(b);
