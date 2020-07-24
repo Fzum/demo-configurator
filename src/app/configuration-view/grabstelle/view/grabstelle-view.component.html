@@ -1,0 +1,10 @@
+<div fxLayoutAlign="space-between">
+  <button
+    [disabled]="g === selectedGrabstelle"
+    (click)="selectGrabstelle(g)"
+    fxFlex
+    *ngFor="let g of grabstellen"
+  >
+    {{ g }}
+  </button>
+</div>

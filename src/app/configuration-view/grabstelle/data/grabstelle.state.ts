@@ -10,20 +10,20 @@ import { SetGrabstelle } from './grabstelle.action';
 
 export interface GrabstelleStateModel {
   allItems: string[];
-  selecteItem: string;
+  selectedItem: string;
 }
 
 @State<GrabstelleStateModel>({
   name: 'grabstelle',
   defaults: {
     allItems: ['grabstelle 1', 'grabstelle 2', 'grabstelle 3'],
-    selecteItem: undefined,
+    selectedItem: undefined,
   },
 })
 export class GrabstelleState {
   @Action(ResetGrabstelle)
   public resetGrabstelle(ctx: StateContext<GrabstelleStateModel>) {
-    ctx.patchState({ selecteItem: undefined });
+    ctx.patchState({ selectedItem: undefined });
     ctx.dispatch(new ResetVerabschiedungsfeier());
   }
 
