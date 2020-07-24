@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { GrabstelleState } from '../data/grabstelle.state';
 import { Observable } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./grabstelle.component.scss'],
 })
 export class GrabstelleComponent implements OnInit {
-  constructor() {}
+  constructor(private store: Store) {}
 
   @Select(GrabstelleState.allItems)
   grabstellen$: Observable<string[]>;
@@ -18,4 +18,8 @@ export class GrabstelleComponent implements OnInit {
   selectedGrabstelle$: Observable<string>;
 
   ngOnInit(): void {}
+
+  selectGrabstelle($event: string) {
+    this.store.dispatch(new this.selectGrabstelle($event));
+  }
 }

@@ -1,4 +1,5 @@
 <app-grabstelle-view
+  (selectGrabstelleE)="selectGrabstelle($event)"
   [selectedGrabstelle]="selectedGrabstelle$ | async"
   [grabstellen]="grabstellen$ | async"
 ></app-grabstelle-view>

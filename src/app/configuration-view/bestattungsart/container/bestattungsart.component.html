@@ -1,4 +1,5 @@
 <app-bestattungsart-view
+  (selectBestattungsartE)="selectBestattunsgsart($event)"
   [bestattungsarten]="bestattungsarten$ | async"
   [selectedBestattungsart]="selectedBestattungsart$ | async"
 ></app-bestattungsart-view>
